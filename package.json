@@ -29,6 +29,7 @@
   "dependencies": {
     "history": "^1.13.1",
     "mapbox.js": "^2.2.3",
+    "moment": "^2.10.6",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-router": "^1.0.0",

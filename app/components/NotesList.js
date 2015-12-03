@@ -2,11 +2,14 @@ import React from 'react';
 import xhr from 'xhr';
 import config from '../config';
 import {Link} from 'react-router';
+import NotesListItem from './NotesListItem';
+import Loading from './Loading';
 
 var NotesList = React.createClass({
     getInitialState: function() {
         return {
-            'notes': []
+            'notes': [],
+            'loading': true
         };
     },
     componentDidMount: function() {
@@ -20,21 +23,30 @@ var NotesList = React.createClass({
             var total = data.total;
             this.setState({
                 'notes': notes,
-                'total': total
+                'total': total,
+                'loading': false
             });
             this.render();
         });
     },
     render: function() {
+        if (this.state.loading) {
+            return (
+                <Loading />
+            );
+        }
         let notesHTML = [];
         this.state.notes.forEach(function(note) {
             console.log('note', note);
+            // let elem = (
+            //     <div key={note.properties.id}>
+            //         <Link to={'/notes/' + note.properties.id}>
+            //             {note.properties.id}
+            //         </Link>
+            //     </div>
+            // );
             let elem = (
-                <div key={note.properties.id}>
-                    <Link to={'/notes/' + note.properties.id}>
-                        {note.properties.id}
-                    </Link>
-                </div>
+                <NotesListItem note={note} key={note.properties.id} />
             );
             notesHTML.push(elem);
         });

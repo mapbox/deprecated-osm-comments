@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import SearchContainer from './SearchContainer';
 import Map from './Map';
-import ContentContainer from './ContentContainer';
+import ContentContainer from '../containers/Content';
 
 
 var App = React.createClass({
@@ -17,43 +16,42 @@ var App = React.createClass({
         console.log('app children', this.props.children);
     },
 
-    getSelected: function() {
-        var pathname = this.props.location.pathname;
-        var pathSplit = pathname.split('/');
-        var selected = 'notes';
-        if (pathSplit.length > 1 && pathSplit[1] !== '') {
-            selected = pathSplit[1];
-        }
-        return selected;        
-    },
+    // getSelected: function() {
+    //     var pathname = this.props.location.pathname;
+    //     var pathSplit = pathname.split('/');
+    //     var selected = 'notes';
+    //     if (pathSplit.length > 1 && pathSplit[1] !== '') {
+    //         selected = pathSplit[1];
+    //     }
+    //     return selected;        
+    // },
 
-    getViewType: function() {
-        var viewType = 'list';
-        var pathname = this.props.location.pathname;
-        var pathSplit = pathname.split('/');
-        console.log('view type path split', pathSplit);
-        if (pathSplit.length > 2 && pathSplit[2] !== '') {
-            viewType = 'detail';
-        }
-        return viewType;
-    },
+    // getViewType: function() {
+    //     var viewType = 'list';
+    //     var pathname = this.props.location.pathname;
+    //     var pathSplit = pathname.split('/');
+    //     console.log('view type path split', pathSplit);
+    //     if (pathSplit.length > 2 && pathSplit[2] !== '') {
+    //         viewType = 'detail';
+    //     }
+    //     return viewType;
+    // },
 
     render: function() {
-        var selected = this.getSelected();
-        var viewType = this.getViewType();
-        var params;
-        console.log('app props', this.props);
-        if (viewType === 'list') {
-            params = this.props.location.query;
-        } else {
-            params = this.props.id;
-        }
-        console.log('selected in app', selected);
+        // var selected = this.getSelected();
+        // var viewType = this.getViewType();
+        // var params;
+        // console.log('app props', this.props);
+        // if (viewType === 'list') {
+        //     params = this.props.location.query;
+        // } else {
+        //     params = this.props.id;
+        // }
+        // console.log('selected in app', selected);
         return (
             <div>
-                <SearchContainer ref="searchContainer" selected={selected} /> 
                 <Map ref="map" />
-                <ContentContainer ref="contentContainer" selected={selected} type={viewType} params={params} />
+                <ContentContainer ref="contentContainer" child={this.props.children} />
             </div>
         );
     }
