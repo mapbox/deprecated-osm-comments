@@ -24,7 +24,7 @@ const routes = (
             </Route>
             <Route path="changesets/" component={ChangesetsContainer}>
                 <Route path="search" component={ChangesetsList} />
-                <Route path="changesets/:id" component={ChangesetsDetail} />
+                <Route path=":id" component={ChangesetsDetail} />
             </Route>
         </Route>
     </Router>
