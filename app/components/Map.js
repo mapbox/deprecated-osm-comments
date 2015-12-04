@@ -7,7 +7,7 @@ var Map = React.createClass({
 
     render: function() {
         return (
-            <div>
+            <div className="col6">
                 I am your map.
             </div>
         );

@@ -5,8 +5,7 @@ var ChangesetsContainer = React.createClass({
 
     render: function() {
         return (
-            <div>
-                This is the changesets container.
+            <div class="clearfix">
                 <ChangesetsSearch />
                 {this.props.children}
             </div>

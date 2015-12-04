@@ -23,12 +23,20 @@ var NotesSearch = React.createClass({
     },
     render: function() {
         return (
-            <div>
-                Search Notes: <br />
-                From Date: <input type="date" ref="from" />
-                To Date: <input type="date" ref="to" /> <br />
-                Users: <input type="text" ref="users" /><br />
-                <button onClick={this.doSearch}>Search</button>
+            <div className="pad1">
+                <fieldset>
+                    <label>From</label>
+                    <input type="date" ref="from" />
+                </fieldset>
+                <fieldset>
+                    <label>To</label>
+                    <input type="date" ref="to" />
+                </fieldset>
+                <fieldset>
+                    <label>Users</label>
+                    <input type="text" ref="users" />
+                </fieldset>
+                <button className="button" onClick={this.doSearch}>Search</button>
             </div>
         );
     }

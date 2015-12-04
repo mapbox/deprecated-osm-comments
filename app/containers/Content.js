@@ -24,10 +24,15 @@ var ContentContainer = React.createClass({
         console.log('content container props', this.props);
         var child = this.props.child;
         return (
-            <div>
-                Content container: <br />
-                <Link to="/notes/search">Notes</Link>
-                <Link to="/changesets/search">Changesets</Link>
+            <div className="col6 pad1 clearfix">
+                <div className="col12 clearfix">
+                    <div className="col4 margin1 pad1 fill-blue dark center">
+                        <Link to="/notes/search">Notes</Link>
+                    </div>
+                    <div className="col4 margin1 pad1 fill-blue dark center">
+                        <Link to="/changesets/search">Changesets</Link>
+                    </div>
+                </div>
                 {child}
             </div>
         );

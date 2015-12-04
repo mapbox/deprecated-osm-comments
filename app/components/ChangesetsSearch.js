@@ -21,11 +21,19 @@ var ChangesetsSearch = React.createClass({
     render: function() {
         return (
             <div>
-                Search Changesets: <br />
-                From Date: <input type="date" ref="from" />
-                To Date: <input type="date" ref="to" /> <br />
-                Users: <input type="text" ref="users" /> <br />
-                <button onClick={this.doSearch}>Search</button>
+                <fieldset>
+                    <label>From</label>
+                    <input type="date" ref="from" className="stretch" />
+                </fieldset>
+                <fieldset>
+                    <label>To</label>
+                    <input type="date" ref="to" className="stretch" />
+                </fieldset>
+                <fieldset>
+                    <label>Users (comma separated)</label>
+                    <input type="text" ref="users" className="stretch" />
+                </fieldset>
+                <button className="button" onClick={this.doSearch}>Search</button>
             </div>
         );
     }
