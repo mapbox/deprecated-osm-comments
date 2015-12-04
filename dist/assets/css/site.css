@@ -1,0 +1,4 @@
+html, body, .application, .app-container, .map {
+    width: 100%;
+    height: 100%;
+}

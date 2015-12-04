@@ -49,7 +49,7 @@ var App = React.createClass({
         // }
         // console.log('selected in app', selected);
         return (
-            <div>
+            <div className="app-container">
                 <Map ref="map" />
                 <ContentContainer ref="contentContainer" child={this.props.children} />
             </div>

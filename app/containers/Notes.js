@@ -6,7 +6,7 @@ var NotesContainer = React.createClass({
     render: function() {
         console.log('notes container props', this.props);
         return (
-            <div class="clearfix">
+            <div className="clearfix">
                 <NotesSearch />
                 {this.props.children}
             </div>
