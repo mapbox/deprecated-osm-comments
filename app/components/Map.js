@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import config from '../config';
-import L from 'leaflet';
+import L from 'mapbox.js';
 
 var Map = React.createClass({
     componentDidMount: function() {
