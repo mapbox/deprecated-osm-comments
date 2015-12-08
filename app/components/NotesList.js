@@ -15,28 +15,28 @@ var NotesList = React.createClass({
     },
     componentDidMount: function() {
         // console.log('notes list did mount', this.props);
-        this.fetchNotes();
+        // this.fetchNotes();
     },
     componentWillReceiveProps: function(newProps) {
         // console.log('list component will receive props', newProps);
-        this.fetchNotes(newProps);
+        // this.fetchNotes(newProps);
     },
-    fetchNotes: function(props) {
-        props = props || this.props;
-        var queryURL = config.API_BASE + 'notes/' + props.location.search;
-        var searchParams = props.location.query;
-        xhr.get(queryURL, searchParams, (err, response) => {
-            console.log('xhr response', response);
-            var data = JSON.parse(response.body);
-            var notes = data.features;
-            var total = data.total;
-            this.setState({
-                'notes': notes,
-                'total': total,
-                'loading': false
-            });
-        });
-    },
+    // fetchNotes: function(props) {
+    //     props = props || this.props;
+    //     var queryURL = config.API_BASE + 'notes/' + props.location.search;
+    //     var searchParams = props.location.query;
+    //     xhr.get(queryURL, searchParams, (err, response) => {
+    //         console.log('xhr response', response);
+    //         var data = JSON.parse(response.body);
+    //         var notes = data.features;
+    //         var total = data.total;
+    //         this.setState({
+    //             'notes': notes,
+    //             'total': total,
+    //             'loading': false
+    //         });
+    //     });
+    // },
     render: function() {
         if (this.state.loading) {
             return (
