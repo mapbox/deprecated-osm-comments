@@ -22,8 +22,8 @@
                     <a href="#" id='changesetLink' class="active block pad2y">Changesets</a>
                     <a href="#" id='noteLink' class="block pad2y pad2x">Notes</a>
                     <div class='rounded-toggle inline' id='filters'>
-                        <a class='active' href='#'>Show unreplied</a>
-                        <a href='#'>Show all</a>
+                        <a id='filter1' class='active' href='#'>Show unreplied</a>
+                        <a id='filter2' href='#'>Show all</a>
                     </div>
                 </nav>
             </div>
@@ -125,16 +125,27 @@
         </div>
         </div>
         <script type="text/javascript">
-            $('#noteLink').on('click', switchLink);
-            $('#changesetLink').on('click', switchLink);
-
-            function switchLink(e) {
+            $('#noteLink').on('click', function (e) {
                 e.preventDefault();
-                $('#changesets').toggleClass('hidden');
-                $('#notes').toggleClass('hidden');
-                $('#noteLink').toggleClass('active');
-                $('#changesetLink').toggleClass('active');
-            }
+                $('#changesets').addClass('hidden');
+                $('#notes').removeClass('hidden');
+                $('#noteLink').addClass('active');
+                $('#changesetLink').removeClass('active');
+
+                $('#filter1').text('Show open');
+                $('#filter2').text('Show all')
+            });
+
+
+            $('#changesetLink').on('click', function (e) {
+                $('#changesets').removeClass('hidden');
+                $('#notes').addClass('hidden');
+                $('#noteLink').removeClass('active');
+                $('#changesetLink').addClass('active');
+
+                $('#filter1').text('Show unreplied');
+                $('#filter2').text('Show all')
+            });
         </script>
     </body>
     </html>
