@@ -16,11 +16,15 @@
         </div>
     </header>
     <div class="app">
-        <nav class="col12 keyline-bottom fill-navy dark z10">
+        <nav class="col12 fill-navy dark z10">
             <div class="limiter">
-                <nav class="primary pad2y">
-                    <a href="#" id='changesetLink' class="pad2y active">Changesets</a>
-                    <a href="#" id='noteLink' class="pad2y pad2x">Notes</a>
+                <nav class="primary">
+                    <a href="#" id='changesetLink' class="active block pad2y">Changesets</a>
+                    <a href="#" id='noteLink' class="block pad2y pad2x">Notes</a>
+                    <div class='rounded-toggle inline' id='filters'>
+                        <a class='active' href='#'>Show unreplied</a>
+                        <a href='#'>Show all</a>
+                    </div>
                 </nav>
             </div>
         </nav>
@@ -118,6 +122,7 @@
                     </div>
                 </div>            
             </div>            
+        </div>
         </div>
         <script type="text/javascript">
             $('#noteLink').on('click', switchLink);
