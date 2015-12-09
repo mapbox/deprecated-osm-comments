@@ -18,14 +18,8 @@ const history = createHistory({
 const routes = (
     <Router history={history}>
         <Route path="/" component={App}>
-            <Route path="notes/" component={NotesContainer}>
-                <Route path="search" component={NotesList} />
-                <Route path=":id" component={NotesDetail} />
-            </Route>
-            <Route path="changesets/" component={ChangesetsContainer}>
-                <Route path="search" component={ChangesetsList} />
-                <Route path=":id" component={ChangesetsDetail} />
-            </Route>
+            <Route path="notes/" component={NotesList} />
+            <Route path="changesets/" component={ChangesetsList} />
         </Route>
     </Router>
 );
