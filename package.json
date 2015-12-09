@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "history": "^1.13.1",
+    "json-loader": "^0.5.4",
     "leaflet": "^0.7.7",
     "mapbox.js": "^2.2.3",
     "moment": "^2.10.6",
