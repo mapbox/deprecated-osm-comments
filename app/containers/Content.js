@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import NotesContainer from './Notes';
-import ChangesetsContainer from './Changesets';
 
 var ContentContainer = React.createClass({
 
