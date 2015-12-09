@@ -4,6 +4,7 @@ import NoResults from './NoResults';
 import ChangesetsListItem from './ChangesetsListItem';
 import xhr from 'xhr';
 import config from '../config';
+import utils from '../utils';
 
 var ChangesetsList = React.createClass({
     getInitialState: function() {
@@ -18,15 +19,30 @@ var ChangesetsList = React.createClass({
     componentWillReceiveProps: function(newProps) {
         this.fetchChangesets(newProps);
     },
+    getQueryString: function(props) {
+        var query = props.location.query;
+        var params = {
+            'users': config.USERS.join(','),
+            'sort': '-discussed_at'
+        };
+        if (query.show === 'all') {
+            delete params.hasDiscussions;
+        }
+        if (query.q) {
+            params.q = props.q;
+        }
+        return utils.getQueryString(params);
+    },
     fetchChangesets: function(props) {
         props = props || this.props;
-        var queryURL = config.API_BASE + 'changesets/' + props.location.search;
-        var searchParams = props.location.query;
+        var queryURL = config.API_BASE + 'changesets/?';
+        queryURL += this.getQueryString(props);
+        // var searchParams = props.location.query;
         this.setState({
             'changesets': [],
             'loading': true
         });
-        xhr.get(queryURL, searchParams, (err, response) => {
+        xhr.get(queryURL, (err, response) => {
             console.log('xhr response', response);
             var data = JSON.parse(response.body);
             var changesets = data.features;

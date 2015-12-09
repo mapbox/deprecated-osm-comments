@@ -5,6 +5,7 @@ import {Link} from 'react-router';
 import NotesListItem from './NotesListItem';
 import Loading from './Loading';
 import NoResults from './NoResults';
+import utils from '../utils';
 
 var NotesList = React.createClass({
     getInitialState: function() {
@@ -21,15 +22,31 @@ var NotesList = React.createClass({
         // console.log('list component will receive props', newProps);
         this.fetchNotes(newProps);
     },
+    getQueryString: function(props) {
+        console.log('props passed to notesList', props);
+        var query = props.location.query;
+        var params = {
+            'users': config.USERS.join(','),
+            'isOpen': 'true',
+            'sort': '-commented_at'
+        };
+        if (query.show === 'all') {
+            delete params.isOpen;
+        }
+        if (query.q) {
+            params.comment = query.q;
+        }
+        return utils.getQueryString(params);
+    },
     fetchNotes: function(props) {
         props = props || this.props;
-        var queryURL = config.API_BASE + 'notes/' + props.location.search;
-        var searchParams = props.location.query;
+        var queryURL = config.API_BASE + 'notes/?';
+        queryURL += this.getQueryString(props);
         this.setState({
             'loading': true,
             'notes': []
         });
-        xhr.get(queryURL, searchParams, (err, response) => {
+        xhr.get(queryURL, (err, response) => {
             console.log('xhr response', response);
             const data = JSON.parse(response.body);
             const notes = data.features;
