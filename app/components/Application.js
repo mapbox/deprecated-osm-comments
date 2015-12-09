@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 // import Map from './Map';
 import NavBar from '../containers/NavBar';
 import ContentContainer from '../containers/Content';
+import ChangesetsList from './ChangesetsList';
 
 
 var App = React.createClass({
@@ -56,7 +57,7 @@ var App = React.createClass({
         }
         return (
             <div className="app-container">
-                <NavBar />
+                <NavBar location={this.props.location} />
                 <ContentContainer ref="contentContainer" child={child} />
             </div>
         );

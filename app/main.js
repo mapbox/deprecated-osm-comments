@@ -8,7 +8,7 @@ import NotesDetail from './components/NotesDetail';
 import ChangesetsDetail from './components/ChangesetsDetail';
 import NotesList from './components/NotesList';
 import ChangesetsList from './components/ChangesetsList';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, Redirect } from 'react-router';
 import createHistory from 'history/lib/createHashHistory';
 
 const history = createHistory({
@@ -17,6 +17,7 @@ const history = createHistory({
 
 const routes = (
     <Router history={history}>
+        <Redirect from="/" to="changesets/" />
         <Route path="/" component={App}>
             <Route path="notes/" component={NotesList} />
             <Route path="changesets/" component={ChangesetsList} />
