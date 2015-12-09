@@ -22,14 +22,15 @@ var ChangesetsList = React.createClass({
     getQueryString: function(props) {
         var query = props.location.query;
         var params = {
+            'unReplied': 'true',
             'users': config.USERS.join(','),
             'sort': '-discussed_at'
         };
         if (query.show === 'all') {
-            delete params.hasDiscussions;
+            delete params.unReplied;
         }
         if (query.q) {
-            params.q = props.q;
+            params.text = query.q;
         }
         return utils.getQueryString(params);
     },
