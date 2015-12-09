@@ -16,14 +16,22 @@
         </div>
     </header>
     <div class="app">
-        <nav class="col12 fill-navy dark z10">
+        <nav class="col12 fill-navy dark z10 row1">
             <div class="limiter">
-                <nav class="primary">
-                    <a href="#" id='changesetLink' class="active block pad2y">Changesets</a>
-                    <a href="#" id='noteLink' class="block pad2y pad2x">Notes</a>
-                    <div class='rounded-toggle inline' id='filters'>
+                <nav class="clearfix primary">
+                    <div class="col4 pad1y">
+                        <a href="#" id='changesetLink' class="active block">Changesets</a>
+                        <a href="#" id='noteLink' class="block pad2x">Notes</a>
+                    </div>
+                    <div class='col3 rounded-toggle inline' id='filters'>
                         <a id='filter1' class='active' href='#'>Show unreplied</a>
                         <a id='filter2' href='#'>Show all</a>
+                    </div>
+                    <div class="col4 pad0y margin1">
+                        <fieldset class='with-icon'>
+                          <span class='icon search'></span>
+                          <input id='users' type='text' value='' />
+                        </fieldset>
                     </div>
                 </nav>
             </div>
