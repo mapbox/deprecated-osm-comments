@@ -9,7 +9,7 @@ const utils = {
         var q = [];
         for (var key in params) {
             if (params.hasOwnProperty(key)) {
-                q.push(key + '=' + params[key]);
+                q.push(key + '=' + encodeURI(params[key]));
             }
         }
         return q.join('&');

@@ -4,6 +4,7 @@ import NoResults from './NoResults';
 import ChangesetsListItem from './ChangesetsListItem';
 import xhr from 'xhr';
 import config from '../config';
+import utils from '../utils';
 
 var ChangesetsList = React.createClass({
     getInitialState: function() {
@@ -18,11 +19,31 @@ var ChangesetsList = React.createClass({
     componentWillReceiveProps: function(newProps) {
         this.fetchChangesets(newProps);
     },
+    getQueryString: function(props) {
+        var query = props.location.query;
+        var params = {
+            'unReplied': 'true',
+            'users': config.USERS.join(','),
+            'sort': '-discussed_at'
+        };
+        if (query.show === 'all') {
+            delete params.unReplied;
+        }
+        if (query.q) {
+            params.text = query.q;
+        }
+        return utils.getQueryString(params);
+    },
     fetchChangesets: function(props) {
         props = props || this.props;
-        var queryURL = config.API_BASE + 'changesets/' + props.location.search;
-        var searchParams = props.location.query;
-        xhr.get(queryURL, searchParams, (err, response) => {
+        var queryURL = config.API_BASE + 'changesets/?';
+        queryURL += this.getQueryString(props);
+        // var searchParams = props.location.query;
+        this.setState({
+            'changesets': [],
+            'loading': true
+        });
+        xhr.get(queryURL, (err, response) => {
             console.log('xhr response', response);
             var data = JSON.parse(response.body);
             var changesets = data.features;
@@ -35,6 +56,7 @@ var ChangesetsList = React.createClass({
         });
     },
     render: function() {
+        console.log('rendering changesets list');
         if (this.state.loading) {
             return (
                 <Loading />
@@ -52,12 +74,34 @@ var ChangesetsList = React.createClass({
             );
             changesetsHTML.push(elem);
         });
-
         return (
-            <div>
+            <div className='clearfix pad4y limiter' id="changesets">
                 {changesetsHTML}
-            </div>
+            </div>  
         );
+        // if (this.state.loading) {
+        //     return (
+        //         <Loading />
+        //     );
+        // }
+        // if (this.state.changesets.length === 0) {
+        //     return (
+        //         <NoResults />
+        //     );
+        // }
+        // let changesetsHTML = [];
+        // this.state.changesets.forEach(function(changeset) {
+        //     let elem = (
+        //         <ChangesetsListItem changeset={changeset} key={changeset.properties.id} />
+        //     );
+        //     changesetsHTML.push(elem);
+        // });
+
+        // return (
+        //     <div>
+        //         {changesetsHTML}
+        //     </div>
+        // );
     }
 });
 

@@ -35,6 +35,9 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-router": "^1.0.0",
+    "turf-buffer": "^1.0.4",
+    "turf-centroid": "^1.1.2",
+    "turf-extent": "^1.0.4",
     "xhr": "^2.2.0"
   },
   "engines": {

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import Map from './Map';
+// import Map from './Map';
+import NavBar from '../containers/NavBar';
 import ContentContainer from '../containers/Content';
+import ChangesetsList from './ChangesetsList';
 
 
 var App = React.createClass({
@@ -48,10 +50,15 @@ var App = React.createClass({
         //     params = this.props.id;
         // }
         // console.log('selected in app', selected);
+        if (!this.props.children) {
+            var child = (<ChangesetsList />);
+        } else {
+            var child = this.props.children;
+        }
         return (
             <div className="app-container">
-                <Map ref="map" />
-                <ContentContainer ref="contentContainer" child={this.props.children} />
+                <NavBar location={this.props.location} />
+                <ContentContainer ref="contentContainer" child={child} />
             </div>
         );
     }
