@@ -30,7 +30,7 @@ var ChangesetsList = React.createClass({
             delete params.unReplied;
         }
         if (query.q) {
-            params.discussion = query.q;
+            params.text = query.q;
         }
         return utils.getQueryString(params);
     },
