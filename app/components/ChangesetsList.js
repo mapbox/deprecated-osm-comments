@@ -24,7 +24,8 @@ var ChangesetsList = React.createClass({
         var params = {
             'unReplied': 'true',
             'users': config.USERS.join(','),
-            'sort': '-discussed_at'
+            'sort': '-discussed_at',
+            'limit': 100
         };
         if (query.show === 'all') {
             delete params.unReplied;

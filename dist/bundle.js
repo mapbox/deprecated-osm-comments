@@ -36270,7 +36270,8 @@
 	        var params = {
 	            'unReplied': 'true',
 	            'users': _config2.default.USERS.join(','),
-	            'sort': '-discussed_at'
+	            'sort': '-discussed_at',
+	            'limit': 100
 	        };
 	        if (query.show === 'all') {
 	            delete params.unReplied;
