@@ -24,7 +24,7 @@ var ChangesetsListItem = React.createClass({
     doJOSM: function(e) {
         e.preventDefault();
         var url = config.OSM_BASE + 'api/0.6/changeset/' + this.props.changeset.properties.id;
-        var josmURL = `http://127.0.0.1:8111/import?url=${url}/download`;
+        var josmURL = this.getJOSMLink();
         xhr.get(josmURL, {}, function(err, res) {
             if (err) {
                 alert("Is JOSM Running?");
@@ -33,12 +33,18 @@ var ChangesetsListItem = React.createClass({
         });
     },
 
+    getJOSMLink: function() {
+        var url = config.OSM_BASE + 'api/0.6/changeset/' + this.props.changeset.properties.id;
+        return `http://127.0.0.1:8111/import?url=${url}/download`;        
+    },
+
     render: function() {
         var changeset = this.props.changeset;
         var props = changeset.properties;
         // var link = '/changesets/' + props.id;
         var osmLink = config.OSM_BASE + 'changeset/' + props.id;
         var osmUserLink = config.OSM_BASE + 'user/' + props.userName;
+        var josmLink = this.getJOSMLink();
         var staticMap = this.getStaticMap();
         return (
             <div className='clearfix box round pad2'>
@@ -53,7 +59,7 @@ var ChangesetsListItem = React.createClass({
                         <span className="icon time">{utils.formatDate(props.createdAt)}</span> |
                         <span className="icon data">{props.numChanges}</span> |
                         <span className="icon contact">{props.discussionCount}</span> |
-                        <a href="#" className="icon crosshair" onClick={this.doJOSM}>
+                        <a href={josmLink} className="icon crosshair" onClick={this.doJOSM}>
                             JOSM
                         </a>
                         <div className="row4 pad1y">

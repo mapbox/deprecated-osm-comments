@@ -36462,7 +36462,7 @@
 	    doJOSM: function doJOSM(e) {
 	        e.preventDefault();
 	        var url = _config2.default.OSM_BASE + 'api/0.6/changeset/' + this.props.changeset.properties.id;
-	        var josmURL = 'http://127.0.0.1:8111/import?url=' + url + '/download';
+	        var josmURL = this.getJOSMLink();
 	        _xhr2.default.get(josmURL, {}, function (err, res) {
 	            if (err) {
 	                alert("Is JOSM Running?");
@@ -36471,12 +36471,18 @@
 	        });
 	    },
 
+	    getJOSMLink: function getJOSMLink() {
+	        var url = _config2.default.OSM_BASE + 'api/0.6/changeset/' + this.props.changeset.properties.id;
+	        return 'http://127.0.0.1:8111/import?url=' + url + '/download';
+	    },
+
 	    render: function render() {
 	        var changeset = this.props.changeset;
 	        var props = changeset.properties;
 	        // var link = '/changesets/' + props.id;
 	        var osmLink = _config2.default.OSM_BASE + 'changeset/' + props.id;
 	        var osmUserLink = _config2.default.OSM_BASE + 'user/' + props.userName;
+	        var josmLink = this.getJOSMLink();
 	        var staticMap = this.getStaticMap();
 	        return _react2.default.createElement(
 	            'div',
@@ -36523,7 +36529,7 @@
 	                    ' |',
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: '#', className: 'icon crosshair', onClick: this.doJOSM },
+	                        { href: josmLink, className: 'icon crosshair', onClick: this.doJOSM },
 	                        'JOSM'
 	                    ),
 	                    _react2.default.createElement(
