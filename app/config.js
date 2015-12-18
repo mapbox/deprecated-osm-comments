@@ -6,7 +6,33 @@ const config = {
     'USERS': [
         'PlaneMad',
         'andygol',
-        'mikelmaron'
+        'mikelmaron',
+        'Rub21',
+        'ediyes',
+        'Luis36995',
+        'dannykath',
+        'RichRico',
+        'ruthmaben',
+        'abel801',
+        'samely',
+        'calfarome',
+        'srividya_c',
+        'Chetan_Gowda',
+        'ramyaragupathy',
+        'lxbarth',
+        'nikhilprabhakar',
+        'jinaloflia',
+        'pratikyadav',
+        'aarthy',
+        'oini',
+        'Jothirnadh',
+        'saikabhi',
+        'geohacker',
+        'shvrm',
+        'karitotp',
+        'manings',
+        'sanjayb',
+        'Arunasank'
     ]
 };
 
