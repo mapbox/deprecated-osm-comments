@@ -37414,7 +37414,8 @@
 	        var params = {
 	            'users': _config2.default.USERS.join(','),
 	            'isOpen': 'true',
-	            'sort': '-commented_at'
+	            'sort': '-commented_at',
+	            'limit': 100
 	        };
 	        if (query.show === 'all') {
 	            delete params.isOpen;

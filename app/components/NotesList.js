@@ -28,7 +28,8 @@ var NotesList = React.createClass({
         var params = {
             'users': config.USERS.join(','),
             'isOpen': 'true',
-            'sort': '-commented_at'
+            'sort': '-commented_at',
+            'limit': 100
         };
         if (query.show === 'all') {
             delete params.isOpen;
