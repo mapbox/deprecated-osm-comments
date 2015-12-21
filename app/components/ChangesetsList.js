@@ -1,6 +1,7 @@
 import React from 'react';
 import Loading from './Loading';
 import NoResults from './NoResults';
+import APIError from './APIError';
 import ChangesetsListItem from './ChangesetsListItem';
 import xhr from 'xhr';
 import config from '../config';
@@ -10,7 +11,8 @@ var ChangesetsList = React.createClass({
     getInitialState: function() {
         return {
             'changesets': [],
-            'loading': true
+            'loading': true,
+            'apiError': false
         };
     },
     componentDidMount: function() {
@@ -46,18 +48,29 @@ var ChangesetsList = React.createClass({
         });
         xhr.get(queryURL, (err, response) => {
             console.log('xhr response', response);
+            if (err) {
+                return this.setState({
+                    'apiError': err
+                });
+            }
             var data = JSON.parse(response.body);
             var changesets = data.features;
             var total = data.total;
             this.setState({
                 'changesets': changesets,
                 'total': total,
-                'loading': false
+                'loading': false,
+                'apiError': false
             });
         });
     },
     render: function() {
         console.log('rendering changesets list');
+        if (this.state.apiError) {
+            return (
+                <APIError error={this.state.apiError} />
+            )
+        }
         if (this.state.loading) {
             return (
                 <Loading />
