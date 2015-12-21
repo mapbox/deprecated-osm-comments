@@ -16,7 +16,6 @@ var NotesListItem = React.createClass({
             if (err) {
                 alert("Is JOSM running?");
             }
-            console.log('JOSM success', res);
         });
     },
 
@@ -58,8 +57,6 @@ var NotesListItem = React.createClass({
                 </a>
             );
         }
-        // var link = '/notes/' + props.id;
-        console.log('utils', utils);
         return (
                 <div className='clearfix box round pad2'>
                     <div className="">
@@ -73,7 +70,6 @@ var NotesListItem = React.createClass({
                             <div className="row1">
                                 {userHTML} | 
                                 <span className="icon time" href="#">{utils.formatDate(props.createdAt)}</span> |
-                                {/* <a className="icon contact"href=""></a> */}
                                 <a className="icon crosshair" onClick={this.doJOSM} href="#">JOSM</a>
                             </div>
                             <div className="row4 pad1y">

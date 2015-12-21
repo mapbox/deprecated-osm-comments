@@ -45,7 +45,6 @@ var ChangesetsList = React.createClass({
         props = props || this.props;
         var queryURL = config.API_BASE + 'changesets/?';
         queryURL += this.getQueryString(props);
-        // var searchParams = props.location.query;
         this.setState({
             'changesets': [],
             'loading': true
@@ -69,7 +68,6 @@ var ChangesetsList = React.createClass({
         });
     },
     render: function() {
-        console.log('rendering changesets list');
         if (this.state.apiError) {
             return (
                 <APIError error={this.state.apiError} />
@@ -97,29 +95,6 @@ var ChangesetsList = React.createClass({
                 {changesetsHTML}
             </div>  
         );
-        // if (this.state.loading) {
-        //     return (
-        //         <Loading />
-        //     );
-        // }
-        // if (this.state.changesets.length === 0) {
-        //     return (
-        //         <NoResults />
-        //     );
-        // }
-        // let changesetsHTML = [];
-        // this.state.changesets.forEach(function(changeset) {
-        //     let elem = (
-        //         <ChangesetsListItem changeset={changeset} key={changeset.properties.id} />
-        //     );
-        //     changesetsHTML.push(elem);
-        // });
-
-        // return (
-        //     <div>
-        //         {changesetsHTML}
-        //     </div>
-        // );
     }
 });
 

@@ -41,7 +41,6 @@ var ChangesetsListItem = React.createClass({
     render: function() {
         var changeset = this.props.changeset;
         var props = changeset.properties;
-        // var link = '/changesets/' + props.id;
         var osmLink = config.OSM_BASE + 'changeset/' + props.id;
         var osmUserLink = config.OSM_BASE + 'user/' + props.userName;
         var josmLink = this.getJOSMLink();
@@ -71,17 +70,6 @@ var ChangesetsListItem = React.createClass({
                     </div>
                 </div>
             </div>
-            // <div>
-            //     Opened on: {utils.formatDate(props.createdAt)},
-            //     Closed on: {utils.formatDate(props.closedAt || '-')},
-            //     By: {props.userName || 'Anonymous'} <br />
-            //     Number of changes: {props.numChanges}<br />
-            //     Discussion items: {props.discussionCount}<br />
-            //     <Link to={link}>
-            //         {props.changesetComment || 'No comment'}
-            //     </Link>
-            //     <br /><br />
-            // </div>
         );
     }
 });

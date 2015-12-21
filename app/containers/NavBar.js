@@ -4,7 +4,6 @@ import NavBarFilter from '../components/NavBarFilter';
 import NavBarSearch from '../components/NavBarSearch';
 
 const NavBar = React.createClass({
-
     render: function() {
         return (
             <nav className="col12 fill-navy dark z10 row1">
