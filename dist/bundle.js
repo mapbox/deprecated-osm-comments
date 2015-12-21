@@ -24696,6 +24696,35 @@
 	            }
 	        }
 	        return q.join('&');
+	    },
+
+	    /*
+	        Function to parse out components from a query string
+	        eg.
+	        >>>getQueryComponents('users:planemad,andygol foobar');
+	        >>>{
+	            'users': ['planemad, andygol'],
+	            'text': 'foobar'
+	        }
+	    */
+	    getQueryComponents: function getQueryComponents(queryText) {
+	        var parts = queryText.split(' ');
+	        var ret = {};
+	        var words = [];
+	        parts.forEach(function (part) {
+	            var split = part.split(':');
+	            if (split.length > 1) {
+	                var key = split[0];
+	                var value = split[1];
+	                if (key === 'users') {
+	                    ret.users = value.split(',');
+	                }
+	            } else {
+	                words.push(part);
+	            }
+	        });
+	        ret.text = words.join(' ');
+	        return ret;
 	    }
 	};
 
@@ -36282,7 +36311,11 @@
 	            delete params.unReplied;
 	        }
 	        if (query.q) {
-	            params.text = query.q;
+	            var queryComponents = _utils2.default.getQueryComponents(query.q);
+	            params.text = queryComponents.text;
+	            if (queryComponents.users) {
+	                params.users = queryComponents.users.join(',');
+	            }
 	        }
 	        return _utils2.default.getQueryString(params);
 	    },
@@ -37387,7 +37420,11 @@
 	            delete params.isOpen;
 	        }
 	        if (query.q) {
-	            params.comment = query.q;
+	            var queryComponents = _utils2.default.getQueryComponents(query.q);
+	            params.comment = queryComponents.text;
+	            if (queryComponents.users) {
+	                params.users = queryComponents.users.join(',');
+	            }
 	        }
 	        return _utils2.default.getQueryString(params);
 	    },
