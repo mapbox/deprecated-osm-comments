@@ -13,6 +13,35 @@ const utils = {
             }
         }
         return q.join('&');
+    },
+
+    /*
+        Function to parse out components from a query string
+        eg.
+        >>>getQueryComponents('users:planemad,andygol foobar');
+        >>>{
+            'users': ['planemad, andygol'],
+            'text': 'foobar'
+        }
+    */
+    getQueryComponents: function(queryText) {
+        var parts = queryText.split(' ');
+        var ret = {};
+        var words = [];
+        parts.forEach(function(part) {
+            var split = part.split(':');
+            if (split.length > 1) {
+                var key = split[0];
+                var value = split[1];
+                if (key === 'users') {
+                    ret.users = value.split(',');
+                }
+            } else {
+                words.push(part);
+            }
+        });
+        ret.text = words.join(' ');
+        return ret;
     }
 };
 
