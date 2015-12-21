@@ -3,8 +3,8 @@ import React from 'react';
 var NoResults = React.createClass({
     render: function() {
         return (
-            <div>
-                No results found.
+            <div className="pad2y">
+                <h5 className="center fancy">No results found.</h5>
             </div>
         );
     }

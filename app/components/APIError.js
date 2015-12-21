@@ -3,8 +3,8 @@ import React from 'react';
 var APIError = React.createClass({
     render: function() {
         return (
-            <div>
-                API Service down or unavailable.
+            <div className="pad2y">
+                <h5 className="center fancy">API Service down or unavailable.</h5>
             </div>
         );
     }
