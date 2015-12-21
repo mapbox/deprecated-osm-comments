@@ -19722,50 +19722,7 @@
 	var App = _react2.default.createClass({
 	    displayName: 'App',
 
-	    componentDidMount: function componentDidMount() {
-	        console.log('app component did mount. much wow');
-	    },
-
-	    componentWillReceiveProps: function componentWillReceiveProps(newProps) {
-	        console.log('app container will receive props', arguments);
-	        console.log('thisProps', this.props.params);
-	        console.log('thisState', this.state);
-	        console.log('just this', this);
-	        console.log('app children', this.props.children);
-	    },
-
-	    // getSelected: function() {
-	    //     var pathname = this.props.location.pathname;
-	    //     var pathSplit = pathname.split('/');
-	    //     var selected = 'notes';
-	    //     if (pathSplit.length > 1 && pathSplit[1] !== '') {
-	    //         selected = pathSplit[1];
-	    //     }
-	    //     return selected;       
-	    // },
-
-	    // getViewType: function() {
-	    //     var viewType = 'list';
-	    //     var pathname = this.props.location.pathname;
-	    //     var pathSplit = pathname.split('/');
-	    //     console.log('view type path split', pathSplit);
-	    //     if (pathSplit.length > 2 && pathSplit[2] !== '') {
-	    //         viewType = 'detail';
-	    //     }
-	    //     return viewType;
-	    // },
-
 	    render: function render() {
-	        // var selected = this.getSelected();
-	        // var viewType = this.getViewType();
-	        // var params;
-	        // console.log('app props', this.props);
-	        // if (viewType === 'list') {
-	        //     params = this.props.location.query;
-	        // } else {
-	        //     params = this.props.id;
-	        // }
-	        // console.log('selected in app', selected);
 	        if (!this.props.children) {
 	            var child = _react2.default.createElement(_ChangesetsList2.default, null);
 	        } else {
@@ -36211,23 +36168,7 @@
 	var ContentContainer = _react2.default.createClass({
 	    displayName: 'ContentContainer',
 
-	    // getChildComponent: function() {
-	    //     var selected = this.props.selected;
-	    //     // var params = this.props.params;
-	    //     if (selected === 'notes') {
-	    //         return (
-	    //             <NotesContainer />
-	    //         );
-	    //     } else {
-	    //         return (
-	    //             <ChangesetsContainer />
-	    //         );
-	    //     }
-	    // },
-
 	    render: function render() {
-	        // ar childComponent = this.getChildComponent();
-	        console.log('content container props', this.props);
 	        var child = this.props.child;
 	        return _react2.default.createElement(
 	            'div',
@@ -36325,7 +36266,6 @@
 	        props = props || this.props;
 	        var queryURL = _config2.default.API_BASE + 'changesets/?';
 	        queryURL += this.getQueryString(props);
-	        // var searchParams = props.location.query;
 	        this.setState({
 	            'changesets': [],
 	            'loading': true
@@ -36349,7 +36289,6 @@
 	        });
 	    },
 	    render: function render() {
-	        console.log('rendering changesets list');
 	        if (this.state.apiError) {
 	            return _react2.default.createElement(_APIError2.default, { error: this.state.apiError });
 	        }
@@ -36369,29 +36308,6 @@
 	            { className: 'clearfix pad4y limiter', id: 'changesets' },
 	            changesetsHTML
 	        );
-	        // if (this.state.loading) {
-	        //     return (
-	        //         <Loading />
-	        //     );
-	        // }
-	        // if (this.state.changesets.length === 0) {
-	        //     return (
-	        //         <NoResults />
-	        //     );
-	        // }
-	        // let changesetsHTML = [];
-	        // this.state.changesets.forEach(function(changeset) {
-	        //     let elem = (
-	        //         <ChangesetsListItem changeset={changeset} key={changeset.properties.id} />
-	        //     );
-	        //     changesetsHTML.push(elem);
-	        // });
-
-	        // return (
-	        //     <div>
-	        //         {changesetsHTML}
-	        //     </div>
-	        // );
 	    }
 	});
 
@@ -36564,7 +36480,6 @@
 	    render: function render() {
 	        var changeset = this.props.changeset;
 	        var props = changeset.properties;
-	        // var link = '/changesets/' + props.id;
 	        var osmLink = _config2.default.OSM_BASE + 'changeset/' + props.id;
 	        var osmUserLink = _config2.default.OSM_BASE + 'user/' + props.userName;
 	        var josmLink = this.getJOSMLink();
@@ -36629,19 +36544,7 @@
 	                    staticMap
 	                )
 	            )
-	        )
-	        // <div>
-	        //     Opened on: {utils.formatDate(props.createdAt)},
-	        //     Closed on: {utils.formatDate(props.closedAt || '-')},
-	        //     By: {props.userName || 'Anonymous'} <br />
-	        //     Number of changes: {props.numChanges}<br />
-	        //     Discussion items: {props.discussionCount}<br />
-	        //     <Link to={link}>
-	        //         {props.changesetComment || 'No comment'}
-	        //     </Link>
-	        //     <br /><br />
-	        // </div>
-	        ;
+	        );
 	    }
 	});
 
@@ -37401,15 +37304,12 @@
 	        };
 	    },
 	    componentDidMount: function componentDidMount() {
-	        // console.log('notes list did mount', this.props);
 	        this.fetchNotes();
 	    },
 	    componentWillReceiveProps: function componentWillReceiveProps(newProps) {
-	        // console.log('list component will receive props', newProps);
 	        this.fetchNotes(newProps);
 	    },
 	    getQueryString: function getQueryString(props) {
-	        console.log('props passed to notesList', props);
 	        var query = props.location.query;
 	        var params = {
 	            'users': _config2.default.USERS.join(','),
@@ -37440,7 +37340,6 @@
 	            'notes': []
 	        });
 	        _xhr2.default.get(queryURL, function (err, response) {
-	            console.log('xhr response', response);
 	            var data = JSON.parse(response.body);
 	            var notes = data.features;
 	            var total = data.total;
@@ -37452,7 +37351,6 @@
 	        });
 	    },
 	    render: function render() {
-	        console.log('rendering notes list');
 	        if (this.state.loading) {
 	            return _react2.default.createElement(_Loading2.default, null);
 	        }
@@ -37469,66 +37367,6 @@
 	            { className: 'clearfix pad4y limiter', id: 'notes' },
 	            notesHTML
 	        );
-	        //         <div className='clearfix box round pad2'>
-	        //             <div className="">
-	        //                 <div className="col8 row2">
-	        //                     <div className="row1">
-	        //                         <div className="col3">
-	        //                             <h3 className="fancy"><a href="#">Note: 82</a></h3>
-	        //                         </div>
-	        //                         <div className="col2 pad0y">
-	        //                             <a className="button short fill-red" href="">Closed</a>
-	        //                         </div>
-	        //                     </div>
-	        //                     <div className="row1">
-	        //                         <a className="icon account" href="#">geohacker</a> |
-	        //                         <a className="icon time" href="#">December 8, 2015</a> |
-	        //                         <a className="icon contact"href="">5</a> |
-	        //                         <a className="icon crosshair" href="#">JOSM</a>
-	        //                     </div>
-	        //                     <div className="row4 pad1y">
-	        //                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.
-	        //                     </div>
-	        //                 </div>
-	        //                 <div className="col4 clip">
-	        //                     <img src="css/map.png" />
-	        //                 </div>
-	        //             </div>
-	        //         </div>           
-	        //     </div>     
-	        // );
-	        // // if (this.state.loading) {
-	        //     return (
-	        //         <Loading />
-	        //     );
-	        // }
-	        // if (this.state.notes.length === 0) {
-	        //     return (
-	        //         <NoResults />
-	        //     );
-	        // }
-	        // let notesHTML = [];
-	        // this.state.notes.forEach(function(note) {
-	        //     // console.log('note', note);
-	        //     // let elem = (
-	        //     //     <div key={note.properties.id}>
-	        //     //         <Link to={'/notes/' + note.properties.id}>
-	        //     //             {note.properties.id}
-	        //     //         </Link>
-	        //     //     </div>
-	        //     // );
-	        //     let elem = (
-	        //         <NotesListItem note={note} key={note.properties.id} />
-	        //     );
-	        //     notesHTML.push(elem);
-	        // });
-	        // // console.log('notesHTML', notesHTML);
-	        // return (
-	        //     <div>
-	        //         This is a notes list: <br /><br />
-	        //         {notesHTML}
-	        //     </div>
-	        // );
 	    }
 	});
 
@@ -37587,7 +37425,6 @@
 	            if (err) {
 	                alert("Is JOSM running?");
 	            }
-	            console.log('JOSM success', res);
 	        });
 	    },
 
@@ -37639,8 +37476,6 @@
 	                props.userName
 	            );
 	        }
-	        // var link = '/notes/' + props.id;
-	        console.log('utils', _utils2.default);
 	        return _react2.default.createElement(
 	            'div',
 	            { className: 'clearfix box round pad2' },
