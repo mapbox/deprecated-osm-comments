@@ -50,7 +50,6 @@ var ChangesetsList = React.createClass({
             'loading': true
         });
         xhr.get(queryURL, (err, response) => {
-            console.log('xhr response', response);
             if (err) {
                 return this.setState({
                     'apiError': err
