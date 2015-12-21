@@ -33,7 +33,11 @@ var ChangesetsList = React.createClass({
             delete params.unReplied;
         }
         if (query.q) {
-            params.text = query.q;
+            var queryComponents = utils.getQueryComponents(query.q);
+            params.text = queryComponents.text;
+            if (queryComponents.users) {
+                params.users = queryComponents.users.join(',');
+            }
         }
         return utils.getQueryString(params);
     },
