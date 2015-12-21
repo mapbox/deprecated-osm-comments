@@ -7,9 +7,9 @@ module.exports = {
         ]
 	},
     output: {
-        path: __dirname + '/dist/',
-        filename: "bundle.js",
-        publicPath: '/dist/'
+        path: __dirname,
+        filename: "dist/bundle.js",
+        publicPath: 'http://localhost:8080/'
         // publicPath: 'http://localhost:8080/'
     },
     module: {
