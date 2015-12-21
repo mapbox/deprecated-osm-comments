@@ -34,7 +34,11 @@ var NotesList = React.createClass({
             delete params.isOpen;
         }
         if (query.q) {
-            params.comment = query.q;
+            var queryComponents = utils.getQueryComponents(query.q);
+            params.comment = queryComponents.text;
+            if (queryComponents.users) {
+                params.users = queryComponents.users.join(',');
+            }
         }
         return utils.getQueryString(params);
     },
