@@ -9,16 +9,22 @@ import StaticMap from './StaticMap';
 var ChangesetsListItem = React.createClass({
     getStaticMap: function() {
         var changeset = this.props.changeset;
-        var centerPoint = turfCentroid(changeset);
-        var lng = centerPoint.geometry.coordinates[0];
-        var lat = centerPoint.geometry.coordinates[1];
-        return (
-            <StaticMap
-                lat={lat}
-                lng={lng}
-                zoom={12}
-                config={config} />            
-        );
+        if (changeset.geometry) {
+            var centerPoint = turfCentroid(changeset);
+            var lng = centerPoint.geometry.coordinates[0];
+            var lat = centerPoint.geometry.coordinates[1];
+            return (
+                <StaticMap
+                    lat={lat}
+                    lng={lng}
+                    zoom={12}
+                    config={config} />            
+            );
+        } else {
+            return (
+                <img width="319" height="192" />
+            )
+        }
     },
 
     doJOSM: function(e) {

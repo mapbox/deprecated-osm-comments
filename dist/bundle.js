@@ -36448,14 +36448,18 @@
 
 	    getStaticMap: function getStaticMap() {
 	        var changeset = this.props.changeset;
-	        var centerPoint = (0, _turfCentroid2.default)(changeset);
-	        var lng = centerPoint.geometry.coordinates[0];
-	        var lat = centerPoint.geometry.coordinates[1];
-	        return _react2.default.createElement(_StaticMap2.default, {
-	            lat: lat,
-	            lng: lng,
-	            zoom: 12,
-	            config: _config2.default });
+	        if (changeset.geometry) {
+	            var centerPoint = (0, _turfCentroid2.default)(changeset);
+	            var lng = centerPoint.geometry.coordinates[0];
+	            var lat = centerPoint.geometry.coordinates[1];
+	            return _react2.default.createElement(_StaticMap2.default, {
+	                lat: lat,
+	                lng: lng,
+	                zoom: 12,
+	                config: _config2.default });
+	        } else {
+	            return _react2.default.createElement('img', { width: '319', height: '192' });
+	        }
 	    },
 
 	    doJOSM: function doJOSM(e) {
@@ -36558,7 +36562,7 @@
 	    value: true
 	});
 	var config = {
-	    'API_BASE': 'http://ec2-52-90-123-145.compute-1.amazonaws.com/api/v1/',
+	    'API_BASE': 'https://api-osm-comments-production.tilestream.net/api/v1/',
 	    'MAPBOX_ACCESS_TOKEN': 'pk.eyJ1Ijoic2FuamF5YiIsImEiOiI3NjVvMFY0In0.byn_eCZGAwR1yaPeC-SVKw',
 	    'OSM_BASE': 'https://www.openstreetmap.org/',
 	    'STATIC_MAPS_BASE': 'https://api.mapbox.com/v4/mapbox.streets/',
