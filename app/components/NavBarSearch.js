@@ -5,10 +5,10 @@ import utils from '../utils';
 var NavBarSearch = React.createClass({
     mixins: [History],
     getInitialState: function() {
-        return {value: this.props.query['q']};
+        return {value: this.props.query['q'] || ''};
     },
     componentWillReceiveProps: function(newProps) {
-        this.setState({ value: newProps.query['q'] });
+        this.setState({ value: newProps.query['q'] || ''});
     },
     handleChange: function(event) {
         this.setState({value: event.target.value});

@@ -24593,10 +24593,10 @@
 
 	    mixins: [_reactRouter.History],
 	    getInitialState: function getInitialState() {
-	        return { value: this.props.query['q'] };
+	        return { value: this.props.query['q'] || '' };
 	    },
 	    componentWillReceiveProps: function componentWillReceiveProps(newProps) {
-	        this.setState({ value: newProps.query['q'] });
+	        this.setState({ value: newProps.query['q'] || '' });
 	    },
 	    handleChange: function handleChange(event) {
 	        this.setState({ value: event.target.value });
