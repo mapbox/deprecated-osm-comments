@@ -4,6 +4,8 @@
 
 #users {
     height: 30px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 .with-icon .icon {
