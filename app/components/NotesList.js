@@ -4,6 +4,7 @@ import config from '../config';
 import {Link} from 'react-router';
 import NotesListItem from './NotesListItem';
 import Loading from './Loading';
+import APIError from './APIError';
 import NoResults from './NoResults';
 import utils from '../utils';
 
@@ -11,7 +12,8 @@ var NotesList = React.createClass({
     getInitialState: function() {
         return {
             'notes': [],
-            'loading': true
+            'loading': true,
+            'apiError': false
         };
     },
     componentDidMount: function() {
@@ -48,17 +50,34 @@ var NotesList = React.createClass({
             'notes': []
         });
         xhr.get(queryURL, (err, response) => {
+            if (err) {
+                return this.setState({
+                    'apiError': err
+                });
+            }
+            const statusCode = response.statusCode;
+            if (statusCode > 400) {
+                return this.setState({
+                    'apiError': JSON.parse(response.body).message
+                });
+            }
             const data = JSON.parse(response.body);
             const notes = data.features;
             const total = data.total;
             this.setState({
                 'notes': notes,
                 'total': total,
-                'loading': false
+                'loading': false,
+                'apiError': false
             });
         });
     },
     render: function() {
+        if (this.state.apiError) {
+            return (
+                <APIError error={this.state.apiError} />
+            )
+        }
         if (this.state.loading) {
             return (
                 <Loading />

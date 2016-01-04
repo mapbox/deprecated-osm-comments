@@ -54,6 +54,12 @@ var ChangesetsList = React.createClass({
                     'apiError': err
                 });
             }
+            var statusCode = response.statusCode;
+            if (statusCode > 400) {
+                return this.setState({
+                    'apiError': JSON.parse(response.body).message
+                });
+            }
             var data = JSON.parse(response.body);
             var changesets = data.features;
             var total = data.total;
