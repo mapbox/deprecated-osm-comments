@@ -44,6 +44,17 @@ var ChangesetsListItem = React.createClass({
         return `http://127.0.0.1:8111/import?url=${url}/download`;        
     },
 
+    getLastCommentHTML: function(props) {
+        return (
+            <div>
+                <a className="icon account" href={config.OSM_BASE + 'user/' + props.lastCommentUserName}>
+                    {props.lastCommentUserName}&nbsp;
+                </a>
+                {utils.formatDate(props.lastCommentTimestamp)}: {props.lastCommentComment}
+            </div>
+        )
+    },
+
     render: function() {
         var changeset = this.props.changeset;
         var props = changeset.properties;
@@ -51,13 +62,17 @@ var ChangesetsListItem = React.createClass({
         var osmUserLink = config.OSM_BASE + 'user/' + props.userName;
         var josmLink = this.getJOSMLink();
         var staticMap = this.getStaticMap();
+        var discussionCount = props.discussionCount;
+        var commentText = discussionCount === 1 ? 'Comment' : 'Comments';
+        var lastCommentHTML = this.getLastCommentHTML(props);
         return (
             <div className='clearfix box round pad2'>
                 <div className="">
                     <div className="col8 row2">
                         <h3 className="fancy">
-                            <a href={osmLink} target="_blank">Changeset: {props.id}</a>
+                            <a href={osmLink} target="_blank">{props.id}</a>
                         </h3>
+                        {discussionCount} {commentText}
                         <a className="icon account" href={osmUserLink} target="_blank">
                             {props.userName}
                         </a> | 
@@ -68,7 +83,7 @@ var ChangesetsListItem = React.createClass({
                             JOSM
                         </a>
                         <div className="row4 pad1y">
-                            {props.changesetComment || 'No comment'} 
+                            {lastCommentHTML}
                         </div>
                     </div>
                     <div className="col4 clip">

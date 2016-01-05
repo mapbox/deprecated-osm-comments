@@ -24,6 +24,36 @@ var NotesListItem = React.createClass({
         var extent = turfExtent(buffer);
         return extent;
     },
+    getLastCommentHTML: function(props) {
+        var isAnonymous = props.lastCommentUserName ? false : true;
+        var isOpeningComment = props.lastCommentAction === 'opened' ? true : false;
+        if (isOpeningComment) {
+            return '';
+        }
+        var userHTML;
+        if (isAnonymous) {
+            userHTML = (
+                <span className="icon account">
+                    Anonymous
+                </span>
+            )
+        } else {
+            userHTML = (
+                <a className="icon account" href={config.OSM_BASE + 'user/' + props.lastCommentUserName} target="_blank">
+                    {props.lastCommentUserName}
+                </a>
+            )
+        }
+        var commentString = props.lastCommentAction + " " + utils.formatDate(props.lastCommentTimestamp);
+        if (props.lastCommentComment) {
+            commentString += ": " + props.lastCommentComment;
+        }
+        return (
+            <div>
+                {userHTML} {commentString}
+            </div>
+        )
+    },
     render: function() {
         var note = this.props.note;
         var props = note.properties;
@@ -31,6 +61,8 @@ var NotesListItem = React.createClass({
         var isOpen = props.closedAt ? false : true;
         var lng = note.geometry.coordinates[0];
         var lat = note.geometry.coordinates[1];
+        var commentCount = props.commentCount;
+        var commentText = commentCount === 1 ? 'Comment' : 'Comments';
         var zoom = 13;
         if (isOpen) {
             var statusHTML = (
@@ -57,13 +89,14 @@ var NotesListItem = React.createClass({
                 </a>
             );
         }
+        var lastCommentHTML = this.getLastCommentHTML(props);
         return (
                 <div className='clearfix box round pad2'>
                     <div className="">
                         <div className="col8 row2">
                             <div className="row1">
                                 <div className="col4">
-                                    <h3 className="fancy"><a href={osmLink} target="_blank">Note: {props.id}</a></h3>
+                                    <h3 className="fancy"><a href={osmLink} target="_blank">{props.id}</a></h3> {commentCount} {commentText}
                                 </div>
                                 {statusHTML}
                             </div>
@@ -73,7 +106,8 @@ var NotesListItem = React.createClass({
                                 <a className="icon crosshair" onClick={this.doJOSM} href="#">JOSM</a>
                             </div>
                             <div className="row4 pad1y">
-                                {props.note} 
+                                {props.note}
+                                {lastCommentHTML}
                             </div>
                         </div>
                         <div className="col4 clip">
