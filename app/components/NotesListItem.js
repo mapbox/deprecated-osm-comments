@@ -66,15 +66,11 @@ var NotesListItem = React.createClass({
         var zoom = 13;
         if (isOpen) {
             var statusHTML = (
-                <div className="col2 pad0y">
-                    <span className="button short fill-green" href="">Open</span> 
-                </div>
+                    <span className="button short fill-green button-status button-inline pad1x">Open</span> 
             );
         } else {
             var statusHTML = (
-                <div className="col2 pad0y">
-                    <span className="button short fill-red" href="">Closed</span> 
-                </div>
+                    <span className="button short fill-red button-status button-inline pad1x">Closed</span> 
             )
         }
         var isAnonymous = props.userName ? false : true;
@@ -96,14 +92,17 @@ var NotesListItem = React.createClass({
                         <div className="col8 row2">
                             <div className="row1">
                                 <div className="col4">
-                                    <h3 className="fancy"><a href={osmLink} target="_blank">{props.id}</a></h3> {commentCount} {commentText}
+                                    <h3 className="fancy inline-heading middle pad1yr"><a href={osmLink} target="_blank">{props.id}</a></h3>
+                                    {statusHTML}  
                                 </div>
-                                {statusHTML}
                             </div>
                             <div className="row1">
+  
                                 {userHTML} | 
                                 <span className="icon time" href="#">{utils.formatDate(props.createdAt)}</span> |
+                                <span className="icon contact">{props.commentCount}</span> |
                                 <a className="icon crosshair" onClick={this.doJOSM} href="#">JOSM</a>
+
                             </div>
                             <div className="row4 pad1y">
                                 {props.note}

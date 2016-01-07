@@ -12,3 +12,24 @@
     top: 5px;
     bottom: 5px;
 }
+
+.button-status {
+    cursor: default;
+}
+
+.inline-heading {
+    display: inline;
+}
+
+.middle {
+    vertical-align: middle;
+}
+
+.button-inline {
+    display: inline;
+}
+
+
+.pad1yr {
+    padding-right: 10px;
+}
