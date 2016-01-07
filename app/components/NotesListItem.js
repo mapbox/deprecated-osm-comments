@@ -24,6 +24,35 @@ var NotesListItem = React.createClass({
         var extent = turfExtent(buffer);
         return extent;
     },
+    getLastCommentHTML: function(props) {
+        var isAnonymous = props.lastCommentUserName ? false : true;
+        var isOpeningComment = props.lastCommentAction === 'opened' ? true : false;
+        if (isOpeningComment) {
+            return '';
+        }
+        var userHTML;
+        if (isAnonymous) {
+            userHTML = (
+                <span className="">
+                    Anonymous
+                </span>
+            )
+        } else {
+            userHTML = (
+                <a className="" href={config.OSM_BASE + 'user/' + props.lastCommentUserName} target="_blank">
+                    {props.lastCommentUserName}
+                </a>
+            )
+        }
+        var commentString = props.lastCommentAction + " " + utils.formatDate(props.lastCommentTimestamp);
+        return (
+            <div className="pad1y">
+                <span className="icon contact comment-user quiet">{userHTML} </span>
+                <span className="quiet">{commentString}</span>
+                <div className="comment-last pad1rt">{props.lastCommentComment}</div>
+            </div>
+        )
+    },
     render: function() {
         var note = this.props.note;
         var props = note.properties;
@@ -31,18 +60,16 @@ var NotesListItem = React.createClass({
         var isOpen = props.closedAt ? false : true;
         var lng = note.geometry.coordinates[0];
         var lat = note.geometry.coordinates[1];
+        var commentCount = props.commentCount;
+        var commentText = commentCount === 1 ? 'Comment' : 'Comments';
         var zoom = 13;
         if (isOpen) {
             var statusHTML = (
-                <div className="col2 pad0y">
-                    <span className="button short fill-green" href="">Open</span> 
-                </div>
+                    <span className="button short fill-green button-status button-inline pad1x">Open</span> 
             );
         } else {
             var statusHTML = (
-                <div className="col2 pad0y">
-                    <span className="button short fill-red" href="">Closed</span> 
-                </div>
+                    <span className="button short fill-red button-status button-inline pad1x">Closed</span> 
             )
         }
         var isAnonymous = props.userName ? false : true;
@@ -57,23 +84,28 @@ var NotesListItem = React.createClass({
                 </a>
             );
         }
+        var lastCommentHTML = this.getLastCommentHTML(props);
         return (
-                <div className='clearfix box round pad2'>
+                <div className='clearfix box round pad2 blurb'>
                     <div className="">
                         <div className="col8 row2">
                             <div className="row1">
                                 <div className="col4">
-                                    <h3 className="fancy"><a href={osmLink} target="_blank">Note: {props.id}</a></h3>
+                                    <h3 className="fancy inline-heading middle pad1yr"><a href={osmLink} target="_blank">{props.id}</a></h3>
+                                    {statusHTML}  
                                 </div>
-                                {statusHTML}
                             </div>
                             <div className="row1">
+  
                                 {userHTML} | 
                                 <span className="icon time" href="#">{utils.formatDate(props.createdAt)}</span> |
+                                <span className="icon contact">{props.commentCount}</span> |
                                 <a className="icon crosshair" onClick={this.doJOSM} href="#">JOSM</a>
+
                             </div>
                             <div className="row4 pad1y">
-                                {props.note} 
+                                {props.note}
+                                {lastCommentHTML}
                             </div>
                         </div>
                         <div className="col4 clip">

@@ -4,7 +4,8 @@ import tokenizer from './lib/tokenizer';
 const utils = {
     formatDate: function(timestamp) {
         if (!timestamp) return '-';
-        return moment(new Date(timestamp)).format('Do MMM, YYYY');
+        // return moment(new Date(timestamp)).format('Do MMM, YYYY');
+        return moment(new Date(timestamp)).fromNow();
     },
     getQueryString: function(params) {
         var q = [];
