@@ -33,24 +33,23 @@ var NotesListItem = React.createClass({
         var userHTML;
         if (isAnonymous) {
             userHTML = (
-                <span className="icon account">
+                <span className="">
                     Anonymous
                 </span>
             )
         } else {
             userHTML = (
-                <a className="icon account" href={config.OSM_BASE + 'user/' + props.lastCommentUserName} target="_blank">
+                <a className="" href={config.OSM_BASE + 'user/' + props.lastCommentUserName} target="_blank">
                     {props.lastCommentUserName}
                 </a>
             )
         }
         var commentString = props.lastCommentAction + " " + utils.formatDate(props.lastCommentTimestamp);
-        if (props.lastCommentComment) {
-            commentString += ": " + props.lastCommentComment;
-        }
         return (
-            <div>
-                {userHTML} {commentString}
+            <div className="pad1y">
+                <span className="icon contact comment-user quiet">{userHTML} </span>
+                <span className="quiet">{commentString}</span>
+                <div className="comment-last pad1rt">{props.lastCommentComment}</div>
             </div>
         )
     },
@@ -87,7 +86,7 @@ var NotesListItem = React.createClass({
         }
         var lastCommentHTML = this.getLastCommentHTML(props);
         return (
-                <div className='clearfix box round pad2'>
+                <div className='clearfix box round pad2 blurb'>
                     <div className="">
                         <div className="col8 row2">
                             <div className="row1">

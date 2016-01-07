@@ -33,3 +33,22 @@
 .pad1yr {
     padding-right: 10px;
 }
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-last {
+    font-size: 14px;
+    padding-left: 4px;
+}
+
+.pad1rt {
+    padding-right: 10px;
+    padding-top: 4px;
+}
+
+.blurb {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

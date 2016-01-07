@@ -47,10 +47,11 @@ var ChangesetsListItem = React.createClass({
     getLastCommentHTML: function(props) {
         return (
             <div>
-                <a className="icon account" href={config.OSM_BASE + 'user/' + props.lastCommentUserName}>
+                <a className="icon contact quiet" href={config.OSM_BASE + 'user/' + props.lastCommentUserName}>
                     {props.lastCommentUserName}&nbsp;
                 </a>
-                {utils.formatDate(props.lastCommentTimestamp)}: {props.lastCommentComment}
+                <span className="quiet"> {utils.formatDate(props.lastCommentTimestamp)} </span>
+                <div className="comment-last pad1rt"> {props.lastCommentComment} </div>
             </div>
         )
     },
@@ -63,16 +64,14 @@ var ChangesetsListItem = React.createClass({
         var josmLink = this.getJOSMLink();
         var staticMap = this.getStaticMap();
         var discussionCount = props.discussionCount;
-        var commentText = discussionCount === 1 ? 'Comment' : 'Comments';
         var lastCommentHTML = this.getLastCommentHTML(props);
         return (
-            <div className='clearfix box round pad2'>
+            <div className='clearfix box round pad2 blurb'>
                 <div className="">
                     <div className="col8 row2">
                         <h3 className="fancy">
                             <a href={osmLink} target="_blank">{props.id}</a>
                         </h3>
-                        {discussionCount} {commentText}
                         <a className="icon account" href={osmUserLink} target="_blank">
                             {props.userName}
                         </a> | 
