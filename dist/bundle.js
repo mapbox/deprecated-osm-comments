@@ -24646,7 +24646,8 @@
 	var utils = {
 	    formatDate: function formatDate(timestamp) {
 	        if (!timestamp) return '-';
-	        return (0, _moment2.default)(new Date(timestamp)).format('Do MMM, YYYY');
+	        // return moment(new Date(timestamp)).format('Do MMM, YYYY');
+	        return (0, _moment2.default)(new Date(timestamp)).fromNow();
 	    },
 	    getQueryString: function getQueryString(params) {
 	        var q = [];
@@ -48682,6 +48683,12 @@
 	                    'apiError': err
 	                });
 	            }
+	            var statusCode = response.statusCode;
+	            if (statusCode > 400) {
+	                return _this.setState({
+	                    'apiError': JSON.parse(response.body).message
+	                });
+	            }
 	            var data = JSON.parse(response.body);
 	            var changesets = data.features;
 	            var total = data.total;
@@ -48804,7 +48811,7 @@
 	            _react2.default.createElement(
 	                "h5",
 	                { className: "center fancy" },
-	                "API Service down or unavailable."
+	                "An unexpected error occurred."
 	            )
 	        );
 	    }
@@ -48886,6 +48893,33 @@
 	        return 'http://127.0.0.1:8111/import?url=' + url + '/download';
 	    },
 
+	    getLastCommentHTML: function getLastCommentHTML(props) {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'a',
+	                { className: 'icon contact quiet', href: _config2.default.OSM_BASE + 'user/' + props.lastCommentUserName },
+	                props.lastCommentUserName,
+	                ' '
+	            ),
+	            _react2.default.createElement(
+	                'span',
+	                { className: 'quiet' },
+	                ' ',
+	                _utils2.default.formatDate(props.lastCommentTimestamp),
+	                ' '
+	            ),
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'comment-last pad1rt' },
+	                ' ',
+	                props.lastCommentComment,
+	                ' '
+	            )
+	        );
+	    },
+
 	    render: function render() {
 	        var changeset = this.props.changeset;
 	        var props = changeset.properties;
@@ -48893,9 +48927,11 @@
 	        var osmUserLink = _config2.default.OSM_BASE + 'user/' + props.userName;
 	        var josmLink = this.getJOSMLink();
 	        var staticMap = this.getStaticMap();
+	        var discussionCount = props.discussionCount;
+	        var lastCommentHTML = this.getLastCommentHTML(props);
 	        return _react2.default.createElement(
 	            'div',
-	            { className: 'clearfix box round pad2' },
+	            { className: 'clearfix box round pad2 blurb' },
 	            _react2.default.createElement(
 	                'div',
 	                { className: '' },
@@ -48908,7 +48944,6 @@
 	                        _react2.default.createElement(
 	                            'a',
 	                            { href: osmLink, target: '_blank' },
-	                            'Changeset: ',
 	                            props.id
 	                        )
 	                    ),
@@ -48944,7 +48979,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'row4 pad1y' },
-	                        props.changesetComment || 'No comment'
+	                        lastCommentHTML
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -49693,6 +49728,10 @@
 
 	var _Loading2 = _interopRequireDefault(_Loading);
 
+	var _APIError = __webpack_require__(309);
+
+	var _APIError2 = _interopRequireDefault(_APIError);
+
 	var _NoResults = __webpack_require__(308);
 
 	var _NoResults2 = _interopRequireDefault(_NoResults);
@@ -49709,7 +49748,8 @@
 	    getInitialState: function getInitialState() {
 	        return {
 	            'notes': [],
-	            'loading': true
+	            'loading': true,
+	            'apiError': false
 	        };
 	    },
 	    componentDidMount: function componentDidMount() {
@@ -49748,17 +49788,32 @@
 	            'notes': []
 	        });
 	        _xhr2.default.get(queryURL, function (err, response) {
+	            if (err) {
+	                return _this.setState({
+	                    'apiError': err
+	                });
+	            }
+	            var statusCode = response.statusCode;
+	            if (statusCode > 400) {
+	                return _this.setState({
+	                    'apiError': JSON.parse(response.body).message
+	                });
+	            }
 	            var data = JSON.parse(response.body);
 	            var notes = data.features;
 	            var total = data.total;
 	            _this.setState({
 	                'notes': notes,
 	                'total': total,
-	                'loading': false
+	                'loading': false,
+	                'apiError': false
 	            });
 	        });
 	    },
 	    render: function render() {
+	        if (this.state.apiError) {
+	            return _react2.default.createElement(_APIError2.default, { error: this.state.apiError });
+	        }
 	        if (this.state.loading) {
 	            return _react2.default.createElement(_Loading2.default, null);
 	        }
@@ -49841,6 +49896,48 @@
 	        var extent = (0, _turfExtent2.default)(buffer);
 	        return extent;
 	    },
+	    getLastCommentHTML: function getLastCommentHTML(props) {
+	        var isAnonymous = props.lastCommentUserName ? false : true;
+	        var isOpeningComment = props.lastCommentAction === 'opened' ? true : false;
+	        if (isOpeningComment) {
+	            return '';
+	        }
+	        var userHTML;
+	        if (isAnonymous) {
+	            userHTML = _react2.default.createElement(
+	                'span',
+	                { className: '' },
+	                'Anonymous'
+	            );
+	        } else {
+	            userHTML = _react2.default.createElement(
+	                'a',
+	                { className: '', href: _config2.default.OSM_BASE + 'user/' + props.lastCommentUserName, target: '_blank' },
+	                props.lastCommentUserName
+	            );
+	        }
+	        var commentString = props.lastCommentAction + " " + _utils2.default.formatDate(props.lastCommentTimestamp);
+	        return _react2.default.createElement(
+	            'div',
+	            { className: 'pad1y' },
+	            _react2.default.createElement(
+	                'span',
+	                { className: 'icon contact comment-user quiet' },
+	                userHTML,
+	                ' '
+	            ),
+	            _react2.default.createElement(
+	                'span',
+	                { className: 'quiet' },
+	                commentString
+	            ),
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'comment-last pad1rt' },
+	                props.lastCommentComment
+	            )
+	        );
+	    },
 	    render: function render() {
 	        var note = this.props.note;
 	        var props = note.properties;
@@ -49848,26 +49945,20 @@
 	        var isOpen = props.closedAt ? false : true;
 	        var lng = note.geometry.coordinates[0];
 	        var lat = note.geometry.coordinates[1];
+	        var commentCount = props.commentCount;
+	        var commentText = commentCount === 1 ? 'Comment' : 'Comments';
 	        var zoom = 13;
 	        if (isOpen) {
 	            var statusHTML = _react2.default.createElement(
-	                'div',
-	                { className: 'col2 pad0y' },
-	                _react2.default.createElement(
-	                    'span',
-	                    { className: 'button short fill-green', href: '' },
-	                    'Open'
-	                )
+	                'span',
+	                { className: 'button short fill-green button-status button-inline pad1x' },
+	                'Open'
 	            );
 	        } else {
 	            var statusHTML = _react2.default.createElement(
-	                'div',
-	                { className: 'col2 pad0y' },
-	                _react2.default.createElement(
-	                    'span',
-	                    { className: 'button short fill-red', href: '' },
-	                    'Closed'
-	                )
+	                'span',
+	                { className: 'button short fill-red button-status button-inline pad1x' },
+	                'Closed'
 	            );
 	        }
 	        var isAnonymous = props.userName ? false : true;
@@ -49884,9 +49975,10 @@
 	                props.userName
 	            );
 	        }
+	        var lastCommentHTML = this.getLastCommentHTML(props);
 	        return _react2.default.createElement(
 	            'div',
-	            { className: 'clearfix box round pad2' },
+	            { className: 'clearfix box round pad2 blurb' },
 	            _react2.default.createElement(
 	                'div',
 	                { className: '' },
@@ -49901,16 +49993,15 @@
 	                            { className: 'col4' },
 	                            _react2.default.createElement(
 	                                'h3',
-	                                { className: 'fancy' },
+	                                { className: 'fancy inline-heading middle pad1yr' },
 	                                _react2.default.createElement(
 	                                    'a',
 	                                    { href: osmLink, target: '_blank' },
-	                                    'Note: ',
 	                                    props.id
 	                                )
-	                            )
-	                        ),
-	                        statusHTML
+	                            ),
+	                            statusHTML
+	                        )
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -49924,6 +50015,12 @@
 	                        ),
 	                        ' |',
 	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'icon contact' },
+	                            props.commentCount
+	                        ),
+	                        ' |',
+	                        _react2.default.createElement(
 	                            'a',
 	                            { className: 'icon crosshair', onClick: this.doJOSM, href: '#' },
 	                            'JOSM'
@@ -49932,7 +50029,8 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'row4 pad1y' },
-	                        props.note
+	                        props.note,
+	                        lastCommentHTML
 	                    )
 	                ),
 	                _react2.default.createElement(
