@@ -21,7 +21,7 @@ const config = {
         'ramyaragupathy',
         'lxbarth',
         'nikhilprabhakar',
-        'jinaloflia',
+        'jinalfoflia',
         'pratikyadav',
         'aarthy',
         'oini',
