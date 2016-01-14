@@ -47,7 +47,7 @@ var ChangesetsListItem = React.createClass({
     getLastCommentHTML: function(props) {
         return (
             <div>
-                <a className="icon contact quiet" href={config.OSM_BASE + 'user/' + props.lastCommentUserName}>
+                <a className="icon contact quiet" title="Comment" href={config.OSM_BASE + 'user/' + props.lastCommentUserName}>
                     {props.lastCommentUserName}&nbsp;
                 </a>
                 <span className="quiet"> {utils.formatDate(props.lastCommentTimestamp)} </span>
@@ -72,12 +72,12 @@ var ChangesetsListItem = React.createClass({
                         <h3 className="fancy">
                             <a href={osmLink} target="_blank">{props.id}</a>
                         </h3>
-                        <a className="icon account" href={osmUserLink} target="_blank">
+                        <a className="icon account" title="User" href={osmUserLink} target="_blank">
                             {props.userName}
                         </a> | 
-                        <span className="icon time">{utils.formatDate(props.createdAt)}</span> |
-                        <span className="icon data">{props.numChanges}</span> |
-                        <span className="icon contact">{props.discussionCount}</span> |
+                        <span className="icon time" title="Date">{utils.formatDate(props.createdAt)}</span> |
+                        <span className="icon data" title="Features modified">{props.numChanges}</span> |
+                        <span className="icon contact" title="Number of comments">{props.discussionCount}</span> |
                         <a href={josmLink} className="icon crosshair" onClick={this.doJOSM}>
                             JOSM
                         </a>
