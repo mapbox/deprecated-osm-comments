@@ -46,8 +46,8 @@ var NotesListItem = React.createClass({
         }
         var commentString = props.lastCommentAction + " " + utils.formatDate(props.lastCommentTimestamp);
         return (
-            <div className="pad1y">
-                <span className="icon contact comment-user quiet">{userHTML} </span>
+            <div className="">
+                <span className="icon contact comment-user quiet" title="Comment">{userHTML} </span>
                 <span className="quiet">{commentString}</span>
                 <div className="comment-last pad1rt">{props.lastCommentComment}</div>
             </div>
@@ -75,11 +75,11 @@ var NotesListItem = React.createClass({
         var isAnonymous = props.userName ? false : true;
         if (isAnonymous) {
             var userHTML = (
-                <span className="icon account">Anonymous</span>
+                <span className="icon account" title="User">Anonymous</span>
             );
         } else {
             var userHTML = (
-                <a className="icon account" href={config.OSM_BASE + 'user/' + props.userName} target="_blank">
+                <a className="icon account" title="User" href={config.OSM_BASE + 'user/' + props.userName} target="_blank">
                     {props.userName}
                 </a>
             );
@@ -98,12 +98,12 @@ var NotesListItem = React.createClass({
                             <div className="row1">
   
                                 {userHTML} | 
-                                <span className="icon time" href="#">{utils.formatDate(props.createdAt)}</span> |
-                                <span className="icon contact">{props.commentCount}</span> |
+                                <span className="icon time" href="#" title="Date">{utils.formatDate(props.createdAt)}</span> |
+                                <span className="icon contact" title="Number of comments">{props.commentCount}</span> |
                                 <a className="icon crosshair" onClick={this.doJOSM} href="#">JOSM</a>
 
                             </div>
-                            <div className="row4 pad1y">
+                            <div className="">
                                 {props.note}
                                 {lastCommentHTML}
                             </div>

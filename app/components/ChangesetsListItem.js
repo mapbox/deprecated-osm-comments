@@ -47,7 +47,7 @@ var ChangesetsListItem = React.createClass({
     getLastCommentHTML: function(props) {
         return (
             <div>
-                <a className="icon contact quiet" href={config.OSM_BASE + 'user/' + props.lastCommentUserName}>
+                <a className="icon contact quiet" title="Comment" href={config.OSM_BASE + 'user/' + props.lastCommentUserName}>
                     {props.lastCommentUserName}&nbsp;
                 </a>
                 <span className="quiet"> {utils.formatDate(props.lastCommentTimestamp)} </span>
@@ -68,20 +68,20 @@ var ChangesetsListItem = React.createClass({
         return (
             <div className='clearfix box round pad2 blurb'>
                 <div className="">
-                    <div className="col8 row2">
+                    <div className="col8">
                         <h3 className="fancy">
                             <a href={osmLink} target="_blank">{props.id}</a>
                         </h3>
-                        <a className="icon account" href={osmUserLink} target="_blank">
+                        <a className="icon account" title="User" href={osmUserLink} target="_blank">
                             {props.userName}
                         </a> | 
-                        <span className="icon time">{utils.formatDate(props.createdAt)}</span> |
-                        <span className="icon data">{props.numChanges}</span> |
-                        <span className="icon contact">{props.discussionCount}</span> |
+                        <span className="icon time" title="Date">{utils.formatDate(props.createdAt)}</span> |
+                        <span className="icon data" title="Features modified">{props.numChanges}</span> |
+                        <span className="icon contact" title="Number of comments">{props.discussionCount}</span> |
                         <a href={josmLink} className="icon crosshair" onClick={this.doJOSM}>
                             JOSM
                         </a>
-                        <div className="row4 pad1y">
+                        <div className="pad1y">
                             {lastCommentHTML}
                         </div>
                     </div>
