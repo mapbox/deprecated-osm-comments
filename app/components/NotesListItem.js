@@ -46,7 +46,7 @@ var NotesListItem = React.createClass({
         }
         var commentString = props.lastCommentAction + " " + utils.formatDate(props.lastCommentTimestamp);
         return (
-            <div className="pad1y">
+            <div className="">
                 <span className="icon contact comment-user quiet" title="Comment">{userHTML} </span>
                 <span className="quiet">{commentString}</span>
                 <div className="comment-last pad1rt">{props.lastCommentComment}</div>
@@ -103,7 +103,7 @@ var NotesListItem = React.createClass({
                                 <a className="icon crosshair" onClick={this.doJOSM} href="#">JOSM</a>
 
                             </div>
-                            <div className="row4 pad1y">
+                            <div className="">
                                 {props.note}
                                 {lastCommentHTML}
                             </div>

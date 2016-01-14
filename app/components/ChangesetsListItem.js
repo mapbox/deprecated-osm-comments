@@ -68,7 +68,7 @@ var ChangesetsListItem = React.createClass({
         return (
             <div className='clearfix box round pad2 blurb'>
                 <div className="">
-                    <div className="col8 row2">
+                    <div className="col8">
                         <h3 className="fancy">
                             <a href={osmLink} target="_blank">{props.id}</a>
                         </h3>
@@ -81,7 +81,7 @@ var ChangesetsListItem = React.createClass({
                         <a href={josmLink} className="icon crosshair" onClick={this.doJOSM}>
                             JOSM
                         </a>
-                        <div className="row4 pad1y">
+                        <div className="pad1y">
                             {lastCommentHTML}
                         </div>
                     </div>
