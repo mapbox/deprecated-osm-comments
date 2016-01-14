@@ -13,8 +13,8 @@ var NavBarFilter = React.createClass({
 
         return (
             <div className='col3 rounded-toggle inline' id='filters'>
-                <Link to={ this.props.location } query={ filterQuery } className={ filterActive }>{ filterLabel }</Link>
-                <Link to={ this.props.location } query={ allQuery } className={ allActive }>Show all</Link>
+                <Link to={ this.props.location } query={ filterQuery } className={ 'col6 center '+ filterActive }>{ filterLabel }</Link>
+                <Link to={ this.props.location } query={ allQuery } className={ 'col6 center ' + allActive }>Show all</Link>
             </div>
         );
     }
