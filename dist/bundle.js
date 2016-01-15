@@ -24552,12 +24552,12 @@
 	            { className: 'col3 rounded-toggle inline', id: 'filters' },
 	            _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: this.props.location, query: filterQuery, className: filterActive },
+	                { to: this.props.location, query: filterQuery, className: 'col6 center ' + filterActive },
 	                filterLabel
 	            ),
 	            _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: this.props.location, query: allQuery, className: allActive },
+	                { to: this.props.location, query: allQuery, className: 'col6 center ' + allActive },
 	                'Show all'
 	            )
 	        );
@@ -48899,7 +48899,7 @@
 	            null,
 	            _react2.default.createElement(
 	                'a',
-	                { className: 'icon contact quiet', href: _config2.default.OSM_BASE + 'user/' + props.lastCommentUserName },
+	                { className: 'icon contact quiet', title: 'Comment', href: _config2.default.OSM_BASE + 'user/' + props.lastCommentUserName },
 	                props.lastCommentUserName,
 	                ' '
 	            ),
@@ -48937,7 +48937,7 @@
 	                { className: '' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col8 row2' },
+	                    { className: 'col8' },
 	                    _react2.default.createElement(
 	                        'h3',
 	                        { className: 'fancy' },
@@ -48949,25 +48949,25 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'a',
-	                        { className: 'icon account', href: osmUserLink, target: '_blank' },
+	                        { className: 'icon account', title: 'User', href: osmUserLink, target: '_blank' },
 	                        props.userName
 	                    ),
 	                    ' |',
 	                    _react2.default.createElement(
 	                        'span',
-	                        { className: 'icon time' },
+	                        { className: 'icon time', title: 'Date' },
 	                        _utils2.default.formatDate(props.createdAt)
 	                    ),
 	                    ' |',
 	                    _react2.default.createElement(
 	                        'span',
-	                        { className: 'icon data' },
+	                        { className: 'icon data', title: 'Features modified' },
 	                        props.numChanges
 	                    ),
 	                    ' |',
 	                    _react2.default.createElement(
 	                        'span',
-	                        { className: 'icon contact' },
+	                        { className: 'icon contact', title: 'Number of comments' },
 	                        props.discussionCount
 	                    ),
 	                    ' |',
@@ -48978,7 +48978,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'row4 pad1y' },
+	                        { className: 'pad1y' },
 	                        lastCommentHTML
 	                    )
 	                ),
@@ -49919,10 +49919,10 @@
 	        var commentString = props.lastCommentAction + " " + _utils2.default.formatDate(props.lastCommentTimestamp);
 	        return _react2.default.createElement(
 	            'div',
-	            { className: 'pad1y' },
+	            { className: '' },
 	            _react2.default.createElement(
 	                'span',
-	                { className: 'icon contact comment-user quiet' },
+	                { className: 'icon contact comment-user quiet', title: 'Comment' },
 	                userHTML,
 	                ' '
 	            ),
@@ -49965,13 +49965,13 @@
 	        if (isAnonymous) {
 	            var userHTML = _react2.default.createElement(
 	                'span',
-	                { className: 'icon account' },
+	                { className: 'icon account', title: 'User' },
 	                'Anonymous'
 	            );
 	        } else {
 	            var userHTML = _react2.default.createElement(
 	                'a',
-	                { className: 'icon account', href: _config2.default.OSM_BASE + 'user/' + props.userName, target: '_blank' },
+	                { className: 'icon account', title: 'User', href: _config2.default.OSM_BASE + 'user/' + props.userName, target: '_blank' },
 	                props.userName
 	            );
 	        }
@@ -50010,13 +50010,13 @@
 	                        ' |',
 	                        _react2.default.createElement(
 	                            'span',
-	                            { className: 'icon time', href: '#' },
+	                            { className: 'icon time', href: '#', title: 'Date' },
 	                            _utils2.default.formatDate(props.createdAt)
 	                        ),
 	                        ' |',
 	                        _react2.default.createElement(
 	                            'span',
-	                            { className: 'icon contact' },
+	                            { className: 'icon contact', title: 'Number of comments' },
 	                            props.commentCount
 	                        ),
 	                        ' |',
@@ -50028,7 +50028,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'row4 pad1y' },
+	                        { className: '' },
 	                        props.note,
 	                        lastCommentHTML
 	                    )
