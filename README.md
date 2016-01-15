@@ -1,6 +1,11 @@
 # osm-comments-frontend
 
-Frontend application to query osm-comments-api
+Frontend application to monitor changeset discussions and notes on OSM.
+
+Uses:
+
+  - [osm-comments-api](https://github.com/mapbox/osm-comments-api) as the API back-end
+  - [osm-commets-parser](https://github.com/mapbox/osm-comments-parser) to process OSM XML files
 
 ### Setup
 
