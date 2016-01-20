@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import NavBar from '../containers/NavBar';
 import ContentContainer from '../containers/Content';
 import ChangesetsList from './ChangesetsList';
-
+import Header from './Header';
 
 var App = React.createClass({
     render: function() {
@@ -14,6 +14,7 @@ var App = React.createClass({
         }
         return (
             <div className="app-container">
+                <Header />
                 <NavBar location={this.props.location} />
                 <ContentContainer ref="contentContainer" child={child} />
             </div>
