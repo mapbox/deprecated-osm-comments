@@ -7,7 +7,7 @@ const NavBar = React.createClass({
     render: function() {
         return (
             <nav className="col12 fill-navy dark z10 pad1y">
-                <div className="limiter">
+                <div className="limiter contain">
                     <nav className="clearfix primary">
                         <NavBarTab location={this.props.location.pathname} query={this.props.location.query} />
                         <NavBarFilter location={this.props.location.pathname} query={this.props.location.query} />
