@@ -21,7 +21,7 @@ var NavBarSearch = React.createClass({
     },
     render: function() {
         return (
-                <div className="col4 pad0y margin1">
+                <div className="pad0y pin-right">
                     <fieldset className='with-icon'>
                         <span className='icon search'></span>
                         <input id='users' type='text' className='round' value={ this.state.value } onChange={this.handleChange} onKeyPress={this.doneTyping} onBlur={this.doneTyping}/>
