@@ -52,3 +52,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.close {
+    cursor: pointer;
+}

@@ -35,11 +35,13 @@ var Header = React.createClass({
       return { aboutModalIsOpen: false };
     },
  
-    openAboutModal: function() {
+    openAboutModal: function(e) {
+        e.preventDefault();
         this.setState({aboutModalIsOpen: true});
     },
  
-    closeAboutModal: function() {
+    closeAboutModal: function(e) {
+        e.preventDefault();
         this.setState({aboutModalIsOpen: false});
     },
 
@@ -51,7 +53,7 @@ var Header = React.createClass({
                         <a className="inline mb-logo" href=".">Mapbox</a>
                     </div>
                     <div className="limiter contain">
-                        <button onClick={this.openAboutModal}>About</button>
+                        <a href="" onClick={this.openAboutModal}>About</a>
                     </div>
                 </header>
                 <Modal
@@ -60,23 +62,29 @@ var Header = React.createClass({
                     style={modalStyle}
                     >
                     
+                    <span className="icon close pin-right pad1" href="" onClick={this.closeAboutModal}></span> 
+
                     <h2>About</h2>
-                    <p>
-                        OSM-Comments was developed as a way to keep track of conversations that
-                        the Mapbox Data Team is having on OpenStreetMap.
-                    </p>
-                    <p>
-                        However, the tool is open source and can be used to search 
-                        for notes and changeset discussions pertaining to any OpenStreetMap user.
-                    </p>
-                    <p>
-                        To search for your own notes / changeset discussions, 
-                        type "users:&lt;user_name&gt;" in the search bar. 
-                        You can add several usernames by comma separating them. 
-                        For eg. try searching for "users:geohacker,PlaneMad" to retrieve notes 
-                        and changeset discussions pertaining to users "geohacker" and "PlaneMad".
-                    </p>
-                    <button onClick={this.closeAboutModal}>close</button> 
+                        <p>
+                            OSM Comments was developed to help the Mapbox Data Team track conversations 
+                            in OpenStreetMap. And it's built for anyone to search notes and changeset 
+                            discussions involving any OpenStreetMap user.
+                        </p>
+                        <p>
+                            Add "users:" in the search bar to find other discussions. 
+                            For example, "users:geohacker,Planemad" will find notes and 
+                            changeset discussions only for these users.
+                        </p>
+                        <p>
+                            Read more on <a href="https://www.mapbox.com/blog/osm-comments/" target="_blank">our blog</a>.
+                        </p>
+                        <p>
+                            <a href="http://www.openstreetmap.org/copyright" target="_blank">
+                                Data © OpenStreetMap contributors
+                            </a>
+                            <br />
+                            Code on <a href="https://github.com/mapbox/osm-comments" target="_blank">GitHub</a>
+                        </p>
  
                 </Modal>
             </div>
