@@ -19779,10 +19779,10 @@
 	    render: function render() {
 	        return _react2.default.createElement(
 	            'nav',
-	            { className: 'col12 fill-navy dark z10 row1' },
+	            { className: 'col12 fill-navy dark z10 pad1y' },
 	            _react2.default.createElement(
 	                'div',
-	                { className: 'limiter' },
+	                { className: 'limiter contain' },
 	                _react2.default.createElement(
 	                    'nav',
 	                    { className: 'clearfix primary' },
@@ -24616,7 +24616,7 @@
 	    render: function render() {
 	        return _react2.default.createElement(
 	            'div',
-	            { className: 'col4 pad0y margin1' },
+	            { className: 'pad0y pin-right' },
 	            _react2.default.createElement(
 	                'fieldset',
 	                { className: 'with-icon' },
@@ -48943,48 +48943,60 @@
 	                { className: '' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'col8' },
+	                    { className: 'col8 row2' },
 	                    _react2.default.createElement(
-	                        'h3',
-	                        { className: 'fancy' },
+	                        'div',
+	                        { className: 'clearfix' },
 	                        _react2.default.createElement(
-	                            'a',
-	                            { href: osmLink, target: '_blank' },
-	                            props.id
+	                            'div',
+	                            { className: 'col12' },
+	                            _react2.default.createElement(
+	                                'h3',
+	                                { className: 'fancy inline-heading middle inline fl' },
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { href: osmLink, target: '_blank' },
+	                                    props.id
+	                                )
+	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(
-	                        'a',
-	                        { className: 'icon account', title: 'User', href: osmUserLink, target: '_blank' },
-	                        props.userName
-	                    ),
-	                    ' |',
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: 'icon time', title: 'Date' },
-	                        _utils2.default.formatDate(props.createdAt)
-	                    ),
-	                    ' |',
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: 'icon data', title: 'Features modified' },
-	                        props.numChanges
-	                    ),
-	                    ' |',
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: 'icon contact', title: 'Number of comments' },
-	                        props.discussionCount
-	                    ),
-	                    ' |',
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: josmLink, className: 'icon crosshair', onClick: this.doJOSM },
-	                        'JOSM'
+	                        'div',
+	                        { className: 'quiet pad0y small' },
+	                        _react2.default.createElement(
+	                            'a',
+	                            { className: 'icon account', title: 'User', href: osmUserLink, target: '_blank' },
+	                            props.userName
+	                        ),
+	                        ' |',
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'icon time', title: 'Date' },
+	                            _utils2.default.formatDate(props.createdAt)
+	                        ),
+	                        ' |',
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'icon data', title: 'Features modified' },
+	                            props.numChanges
+	                        ),
+	                        ' |',
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'icon contact', title: 'Number of comments' },
+	                            props.discussionCount
+	                        ),
+	                        ' |',
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: josmLink, className: 'icon crosshair', onClick: this.doJOSM },
+	                            'JOSM'
+	                        )
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'pad1y' },
+	                        { className: 'prose pad1y quiet' },
 	                        lastCommentHTML
 	                    )
 	                ),
@@ -49759,12 +49771,12 @@
 	    },
 
 	    openAboutModal: function openAboutModal(e) {
-	        e.preventDefault();
+	        if (e) e.preventDefault();
 	        this.setState({ aboutModalIsOpen: true });
 	    },
 
 	    closeAboutModal: function closeAboutModal(e) {
-	        e.preventDefault();
+	        if (e) e.preventDefault();
 	        this.setState({ aboutModalIsOpen: false });
 	    },
 
@@ -49777,7 +49789,7 @@
 	                { className: 'col12 pad2y fill-navy-dark clearfix' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'limiter contain' },
+	                    { className: 'limiter contain dark' },
 	                    _react2.default.createElement(
 	                        'a',
 	                        { className: 'inline mb-logo', href: '.' },
@@ -51861,7 +51873,7 @@
 	        var commentString = props.lastCommentAction + " " + _utils2.default.formatDate(props.lastCommentTimestamp);
 	        return _react2.default.createElement(
 	            'div',
-	            { className: '' },
+	            { className: 'space-top1' },
 	            _react2.default.createElement(
 	                'span',
 	                { className: 'icon contact comment-user quiet', title: 'Comment' },
@@ -51893,13 +51905,13 @@
 	        if (isOpen) {
 	            var statusHTML = _react2.default.createElement(
 	                'span',
-	                { className: 'button short fill-green button-status button-inline pad1x' },
+	                { className: 'button short fill-green button-status button-inline pad1x fl space-top0 space-left1' },
 	                'Open'
 	            );
 	        } else {
 	            var statusHTML = _react2.default.createElement(
 	                'span',
-	                { className: 'button short fill-red button-status button-inline pad1x' },
+	                { className: 'button short fill-green button-status button-inline pad1x fl space-top0 space-left1' },
 	                'Closed'
 	            );
 	        }
@@ -51929,13 +51941,13 @@
 	                    { className: 'col8 row2' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'row1' },
+	                        { className: 'clearfix' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'col4' },
+	                            { className: 'col12' },
 	                            _react2.default.createElement(
 	                                'h3',
-	                                { className: 'fancy inline-heading middle pad1yr' },
+	                                { className: 'fancy inline-heading middle inline fl' },
 	                                _react2.default.createElement(
 	                                    'a',
 	                                    { href: osmLink, target: '_blank' },
@@ -51947,7 +51959,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'row1' },
+	                        { className: 'quiet pad0y small' },
 	                        userHTML,
 	                        ' |',
 	                        _react2.default.createElement(
@@ -51970,7 +51982,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: '' },
+	                        { className: 'prose pad1y quiet' },
 	                        props.note,
 	                        lastCommentHTML
 	                    )
