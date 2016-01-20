@@ -46,7 +46,7 @@ var NotesListItem = React.createClass({
         }
         var commentString = props.lastCommentAction + " " + utils.formatDate(props.lastCommentTimestamp);
         return (
-            <div className="">
+            <div className="space-top1">
                 <span className="icon contact comment-user quiet" title="Comment">{userHTML} </span>
                 <span className="quiet">{commentString}</span>
                 <div className="comment-last pad1rt">{props.lastCommentComment}</div>
@@ -65,11 +65,15 @@ var NotesListItem = React.createClass({
         var zoom = 13;
         if (isOpen) {
             var statusHTML = (
-                    <span className="button short fill-green button-status button-inline pad1x">Open</span> 
+                    <span className="button short fill-green button-status button-inline pad1x fl space-top0 space-left1">
+                        Open
+                    </span> 
             );
         } else {
             var statusHTML = (
-                    <span className="button short fill-red button-status button-inline pad1x">Closed</span> 
+                    <span className="button short fill-green button-status button-inline pad1x fl space-top0 space-left1">
+                        Closed
+                    </span> 
             )
         }
         var isAnonymous = props.userName ? false : true;
@@ -89,13 +93,15 @@ var NotesListItem = React.createClass({
                 <div className='clearfix box round pad2 blurb'>
                     <div className="">
                         <div className="col8 row2">
-                            <div className="row1">
-                                <div className="col4">
-                                    <h3 className="fancy inline-heading middle pad1yr"><a href={osmLink} target="_blank">{props.id}</a></h3>
+                            <div className="clearfix">
+                                <div className="col12">
+                                    <h3 className="fancy inline-heading middle inline fl">
+                                        <a href={osmLink} target="_blank">{props.id}</a>
+                                     </h3>
                                     {statusHTML}  
                                 </div>
                             </div>
-                            <div className="row1">
+                            <div className="quiet pad0y small">
   
                                 {userHTML} | 
                                 <span className="icon time" href="#" title="Date">{utils.formatDate(props.createdAt)}</span> |
@@ -103,7 +109,7 @@ var NotesListItem = React.createClass({
                                 <a className="icon crosshair" onClick={this.doJOSM} href="#">JOSM</a>
 
                             </div>
-                            <div className="">
+                            <div className="prose pad1y quiet">
                                 {props.note}
                                 {lastCommentHTML}
                             </div>
