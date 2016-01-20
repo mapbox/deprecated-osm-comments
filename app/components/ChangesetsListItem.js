@@ -68,20 +68,26 @@ var ChangesetsListItem = React.createClass({
         return (
             <div className='clearfix box round pad2 blurb'>
                 <div className="">
-                    <div className="col8">
-                        <h3 className="fancy">
-                            <a href={osmLink} target="_blank">{props.id}</a>
-                        </h3>
-                        <a className="icon account" title="User" href={osmUserLink} target="_blank">
-                            {props.userName}
-                        </a> | 
-                        <span className="icon time" title="Date">{utils.formatDate(props.createdAt)}</span> |
-                        <span className="icon data" title="Features modified">{props.numChanges}</span> |
-                        <span className="icon contact" title="Number of comments">{props.discussionCount}</span> |
-                        <a href={josmLink} className="icon crosshair" onClick={this.doJOSM}>
-                            JOSM
-                        </a>
-                        <div className="pad1y">
+                    <div className="col8 row2">
+                        <div className="clearfix">
+                            <div className="col12">
+                                <h3 className="fancy inline-heading middle inline fl">
+                                    <a href={osmLink} target="_blank">{props.id}</a>
+                                </h3>
+                            </div>
+                        </div>
+                        <div className="quiet pad0y small">
+                            <a className="icon account" title="User" href={osmUserLink} target="_blank">
+                                {props.userName}
+                            </a> | 
+                            <span className="icon time" title="Date">{utils.formatDate(props.createdAt)}</span> |
+                            <span className="icon data" title="Features modified">{props.numChanges}</span> |
+                            <span className="icon contact" title="Number of comments">{props.discussionCount}</span> |
+                            <a href={josmLink} className="icon crosshair" onClick={this.doJOSM}>
+                                JOSM
+                            </a>
+                        </div>
+                        <div className="prose pad1y quiet">
                             {lastCommentHTML}
                         </div>
                     </div>

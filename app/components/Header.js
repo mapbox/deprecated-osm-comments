@@ -36,12 +36,12 @@ var Header = React.createClass({
     },
  
     openAboutModal: function(e) {
-        e.preventDefault();
+        if (e) e.preventDefault();
         this.setState({aboutModalIsOpen: true});
     },
  
     closeAboutModal: function(e) {
-        e.preventDefault();
+        if (e) e.preventDefault();
         this.setState({aboutModalIsOpen: false});
     },
 
@@ -49,7 +49,7 @@ var Header = React.createClass({
         return (
             <div>
                 <header className="col12 pad2y fill-navy-dark clearfix">
-                    <div className="limiter contain">
+                    <div className="limiter contain dark">
                         <a className="inline mb-logo" href=".">Mapbox</a>
                     </div>
                     <div className="limiter contain">
