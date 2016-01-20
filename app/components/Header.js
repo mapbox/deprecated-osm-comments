@@ -36,12 +36,12 @@ var Header = React.createClass({
     },
  
     openAboutModal: function(e) {
-        e.preventDefault();
+        if (e) e.preventDefault();
         this.setState({aboutModalIsOpen: true});
     },
  
     closeAboutModal: function(e) {
-        e.preventDefault();
+        if (e) e.preventDefault();
         this.setState({aboutModalIsOpen: false});
     },
 
