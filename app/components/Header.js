@@ -18,7 +18,7 @@ var modalStyle = {
     left: '0',
     padding: '20px',
     bottom: 'auto',
-    width: '400px',
+    width: '520px',
     border: 'none',
     overflow: 'hidden',
     WebkitOverflowScrolling: 'touch',
@@ -65,26 +65,30 @@ var Header = React.createClass({
                     <span className="icon close pin-right pad1" href="" onClick={this.closeAboutModal}></span> 
 
                     <h2>About</h2>
-                        <p>
+                        <p className="prose">
                             OSM Comments was developed to help the Mapbox Data Team track conversations 
                             in OpenStreetMap. And it's built for anyone to search notes and changeset 
                             discussions involving any OpenStreetMap user.
                         </p>
-                        <p>
+                        <p className="prose">
                             Add "users:" in the search bar to find other discussions. 
                             For example, "users:geohacker,Planemad" will find notes and 
                             changeset discussions only for these users.
                         </p>
-                        <p>
+                        <p className="prose">
                             Read more on <a href="https://www.mapbox.com/blog/osm-comments/" target="_blank">our blog</a>.
                         </p>
-                        <p>
+                        <p className="prose">
                             <a href="http://www.openstreetmap.org/copyright" target="_blank">
                                 Data © OpenStreetMap contributors
                             </a>
-                            <br />
-                            Code on <a href="https://github.com/mapbox/osm-comments" target="_blank">GitHub</a>
                         </p>
+                        <p>
+                            <a href="https://github.com/mapbox/osm-comments" className="button space-top2 button icon github pad4x" target="_blank">
+                                Code on Github
+                            </a>
+                        </p>
+
  
                 </Modal>
             </div>
