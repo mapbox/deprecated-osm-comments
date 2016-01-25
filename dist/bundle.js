@@ -24616,7 +24616,7 @@
 	    render: function render() {
 	        return _react2.default.createElement(
 	            'div',
-	            { className: 'pad0y pin-right' },
+	            { className: 'pad0y pin-right searchInputContainer' },
 	            _react2.default.createElement(
 	                'fieldset',
 	                { className: 'with-icon' },
@@ -49751,7 +49751,7 @@
 	        left: '0',
 	        padding: '20px',
 	        bottom: 'auto',
-	        width: '400px',
+	        width: '520px',
 	        border: 'none',
 	        overflow: 'hidden',
 	        WebkitOverflowScrolling: 'touch',
@@ -49821,17 +49821,17 @@
 	                ),
 	                _react2.default.createElement(
 	                    'p',
-	                    null,
+	                    { className: 'prose' },
 	                    'OSM Comments was developed to help the Mapbox Data Team track conversations in OpenStreetMap. And it\'s built for anyone to search notes and changeset discussions involving any OpenStreetMap user.'
 	                ),
 	                _react2.default.createElement(
 	                    'p',
-	                    null,
+	                    { className: 'prose' },
 	                    'Add "users:" in the search bar to find other discussions. For example, "users:geohacker,Planemad" will find notes and changeset discussions only for these users.'
 	                ),
 	                _react2.default.createElement(
 	                    'p',
-	                    null,
+	                    { className: 'prose' },
 	                    'Read more on ',
 	                    _react2.default.createElement(
 	                        'a',
@@ -49842,18 +49842,20 @@
 	                ),
 	                _react2.default.createElement(
 	                    'p',
-	                    null,
+	                    { className: 'prose' },
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: 'http://www.openstreetmap.org/copyright', target: '_blank' },
 	                        'Data © OpenStreetMap contributors'
-	                    ),
-	                    _react2.default.createElement('br', null),
-	                    'Code on ',
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
 	                    _react2.default.createElement(
 	                        'a',
-	                        { href: 'https://github.com/mapbox/osm-comments', target: '_blank' },
-	                        'GitHub'
+	                        { href: 'https://github.com/mapbox/osm-comments', className: 'button space-top2 button icon github pad4x', target: '_blank' },
+	                        'Code on Github'
 	                    )
 	                )
 	            )
