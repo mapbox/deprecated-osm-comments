@@ -56,3 +56,18 @@
 .close {
     cursor: pointer;
 }
+
+@media only screen and (max-width:1060px) {
+    #filters {  min-width: 230px;}
+}
+
+@media only screen and (max-width:710px) {
+    .searchInputContainer {
+        position: relative;
+        clear: both;
+        padding-top: 20px;
+    }
+    #users {
+        width: 100%;
+    }
+}
