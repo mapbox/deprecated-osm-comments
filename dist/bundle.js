@@ -49836,9 +49836,8 @@
 	                _react2.default.createElement(
 	                    'a',
 	                    { href: '', onClick: this.openAboutModal },
-	                    'About'
-	                ),
-	                ' © Mapbox'
+	                    'About this project'
+	                )
 	            ),
 	            _react2.default.createElement(
 	                _reactModal2.default,
