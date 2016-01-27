@@ -49,7 +49,7 @@ var Footer = React.createClass({
         return (
             <div id="footer" className="pad1">
                 <div className="footerContent">
-                    <a href="" onClick={this.openAboutModal}>About</a> &copy; Mapbox
+                    <a href="" onClick={this.openAboutModal}>About this project</a>
                 </div>
                 <Modal
                     isOpen={this.state.aboutModalIsOpen}
