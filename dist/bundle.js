@@ -69,7 +69,7 @@
 
 	var _Content2 = _interopRequireDefault(_Content);
 
-	var _NotesList = __webpack_require__(345);
+	var _NotesList = __webpack_require__(346);
 
 	var _NotesList2 = _interopRequireDefault(_NotesList);
 
@@ -19720,9 +19720,11 @@
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _Footer = __webpack_require__(325);
 
-	// import Map from './Map';
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = _react2.default.createClass({
 	    displayName: 'App',
@@ -19738,10 +19740,12 @@
 	            { className: 'app-container' },
 	            _react2.default.createElement(_Header2.default, null),
 	            _react2.default.createElement(_NavBar2.default, { location: this.props.location }),
-	            _react2.default.createElement(_Content2.default, { ref: 'contentContainer', child: child })
+	            _react2.default.createElement(_Content2.default, { ref: 'contentContainer', child: child }),
+	            _react2.default.createElement(_Footer2.default, null)
 	        );
 	    }
 	});
+	// import Map from './Map';
 
 	exports.default = App;
 
@@ -49718,6 +49722,48 @@
 /* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Header = _react2.default.createClass({
+	    displayName: "Header",
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            "div",
+	            null,
+	            _react2.default.createElement(
+	                "header",
+	                { className: "col12 pad2y fill-navy-dark clearfix" },
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "limiter contain dark" },
+	                    _react2.default.createElement(
+	                        "a",
+	                        { className: "inline mb-logo", href: "." },
+	                        "Mapbox"
+	                    )
+	                )
+	            )
+	        );
+	    }
+	});
+
+	exports.default = Header;
+
+/***/ },
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -49728,7 +49774,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactModal = __webpack_require__(325);
+	var _reactModal = __webpack_require__(326);
 
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 
@@ -49763,8 +49809,8 @@
 	    }
 	};
 
-	var Header = _react2.default.createClass({
-	    displayName: 'Header',
+	var Footer = _react2.default.createClass({
+	    displayName: 'Footer',
 
 	    getInitialState: function getInitialState() {
 	        return { aboutModalIsOpen: false };
@@ -49783,28 +49829,16 @@
 	    render: function render() {
 	        return _react2.default.createElement(
 	            'div',
-	            null,
+	            { id: 'footer', className: 'pad1' },
 	            _react2.default.createElement(
-	                'header',
-	                { className: 'col12 pad2y fill-navy-dark clearfix' },
+	                'div',
+	                { className: 'footerContent' },
 	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'limiter contain dark' },
-	                    _react2.default.createElement(
-	                        'a',
-	                        { className: 'inline mb-logo', href: '.' },
-	                        'Mapbox'
-	                    )
+	                    'a',
+	                    { href: '', onClick: this.openAboutModal },
+	                    'About'
 	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'limiter contain' },
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: '', onClick: this.openAboutModal },
-	                        'About'
-	                    )
-	                )
+	                ' © Mapbox'
 	            ),
 	            _react2.default.createElement(
 	                _reactModal2.default,
@@ -49863,26 +49897,26 @@
 	    }
 	});
 
-	exports.default = Header;
-
-/***/ },
-/* 325 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(326);
-
-
+	exports.default = Footer;
 
 /***/ },
 /* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(327);
+
+
+
+/***/ },
+/* 327 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
-	var ExecutionEnvironment = __webpack_require__(327);
-	var ModalPortal = React.createFactory(__webpack_require__(328));
-	var ariaAppHider = __webpack_require__(343);
-	var elementClass = __webpack_require__(344);
+	var ExecutionEnvironment = __webpack_require__(328);
+	var ModalPortal = React.createFactory(__webpack_require__(329));
+	var ariaAppHider = __webpack_require__(344);
+	var elementClass = __webpack_require__(345);
 	var renderSubtreeIntoContainer = __webpack_require__(159).unstable_renderSubtreeIntoContainer;
 
 	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
@@ -49961,7 +49995,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -50006,14 +50040,14 @@
 
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(329);
-	var scopeTab = __webpack_require__(331);
-	var Assign = __webpack_require__(332);
+	var focusManager = __webpack_require__(330);
+	var scopeTab = __webpack_require__(332);
+	var Assign = __webpack_require__(333);
 
 
 	// so that our CSS is statically analyzable
@@ -50210,10 +50244,10 @@
 
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(330);
+	var findTabbable = __webpack_require__(331);
 	var modalElement = null;
 	var focusLaterElement = null;
 	var needToFocus = false;
@@ -50284,7 +50318,7 @@
 
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports) {
 
 	/*!
@@ -50340,10 +50374,10 @@
 
 
 /***/ },
-/* 331 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(330);
+	var findTabbable = __webpack_require__(331);
 
 	module.exports = function(node, event) {
 	  var tabbable = findTabbable(node);
@@ -50361,7 +50395,7 @@
 
 
 /***/ },
-/* 332 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50372,9 +50406,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseAssign = __webpack_require__(333),
-	    createAssigner = __webpack_require__(339),
-	    keys = __webpack_require__(335);
+	var baseAssign = __webpack_require__(334),
+	    createAssigner = __webpack_require__(340),
+	    keys = __webpack_require__(336);
 
 	/**
 	 * A specialized version of `_.assign` for customizing assigned values without
@@ -50447,7 +50481,7 @@
 
 
 /***/ },
-/* 333 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50458,8 +50492,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseCopy = __webpack_require__(334),
-	    keys = __webpack_require__(335);
+	var baseCopy = __webpack_require__(335),
+	    keys = __webpack_require__(336);
 
 	/**
 	 * The base implementation of `_.assign` without support for argument juggling,
@@ -50480,7 +50514,7 @@
 
 
 /***/ },
-/* 334 */
+/* 335 */
 /***/ function(module, exports) {
 
 	/**
@@ -50518,7 +50552,7 @@
 
 
 /***/ },
-/* 335 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50529,9 +50563,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(336),
-	    isArguments = __webpack_require__(337),
-	    isArray = __webpack_require__(338);
+	var getNative = __webpack_require__(337),
+	    isArguments = __webpack_require__(338),
+	    isArray = __webpack_require__(339);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -50760,7 +50794,7 @@
 
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports) {
 
 	/**
@@ -50903,7 +50937,7 @@
 
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports) {
 
 	/**
@@ -51015,7 +51049,7 @@
 
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports) {
 
 	/**
@@ -51201,7 +51235,7 @@
 
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51212,9 +51246,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var bindCallback = __webpack_require__(340),
-	    isIterateeCall = __webpack_require__(341),
-	    restParam = __webpack_require__(342);
+	var bindCallback = __webpack_require__(341),
+	    isIterateeCall = __webpack_require__(342),
+	    restParam = __webpack_require__(343);
 
 	/**
 	 * Creates a function that assigns properties of source object(s) to a given
@@ -51259,7 +51293,7 @@
 
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports) {
 
 	/**
@@ -51330,7 +51364,7 @@
 
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports) {
 
 	/**
@@ -51468,7 +51502,7 @@
 
 
 /***/ },
-/* 342 */
+/* 343 */
 /***/ function(module, exports) {
 
 	/**
@@ -51541,7 +51575,7 @@
 
 
 /***/ },
-/* 343 */
+/* 344 */
 /***/ function(module, exports) {
 
 	var _element = typeof document !== 'undefined' ? document.body : null;
@@ -51588,7 +51622,7 @@
 
 
 /***/ },
-/* 344 */
+/* 345 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -51653,7 +51687,7 @@
 
 
 /***/ },
-/* 345 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51676,7 +51710,7 @@
 
 	var _reactRouter = __webpack_require__(163);
 
-	var _NotesListItem = __webpack_require__(346);
+	var _NotesListItem = __webpack_require__(347);
 
 	var _NotesListItem2 = _interopRequireDefault(_NotesListItem);
 
@@ -51792,7 +51826,7 @@
 	exports.default = NotesList;
 
 /***/ },
-/* 346 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51823,11 +51857,11 @@
 
 	var _xhr2 = _interopRequireDefault(_xhr);
 
-	var _turfBuffer = __webpack_require__(347);
+	var _turfBuffer = __webpack_require__(348);
 
 	var _turfBuffer2 = _interopRequireDefault(_turfBuffer);
 
-	var _turfExtent = __webpack_require__(354);
+	var _turfExtent = __webpack_require__(355);
 
 	var _turfExtent2 = _interopRequireDefault(_turfExtent);
 
@@ -52007,16 +52041,16 @@
 	exports.default = NotesListItem;
 
 /***/ },
-/* 347 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// http://stackoverflow.com/questions/839899/how-do-i-calculate-a-point-on-a-circles-circumference
 	// radians = degrees * (pi/180)
 	// https://github.com/bjornharrtell/jsts/blob/master/examples/buffer.html
 
-	var featurecollection = __webpack_require__(348);
-	var jsts = __webpack_require__(349);
-	var normalize = __webpack_require__(353);
+	var featurecollection = __webpack_require__(349);
+	var jsts = __webpack_require__(350);
+	var normalize = __webpack_require__(354);
 
 	/**
 	* Calculates a buffer for input features for a given radius. Units supported are miles, kilometers, and degrees.
@@ -52089,7 +52123,7 @@
 
 
 /***/ },
-/* 348 */
+/* 349 */
 /***/ function(module, exports) {
 
 	/**
@@ -52119,23 +52153,23 @@
 
 
 /***/ },
-/* 349 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(350);
-	var jsts = __webpack_require__(352);
-	module.exports = jsts
-
-
-/***/ },
 /* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(351);
+	var jsts = __webpack_require__(353);
+	module.exports = jsts
 
 
 /***/ },
 /* 351 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(352);
+
+
+/***/ },
+/* 352 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*
@@ -52184,7 +52218,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 352 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* The JSTS Topology Suite is a collection of JavaScript classes that
@@ -53898,7 +53932,7 @@
 	return false;}};})();
 
 /***/ },
-/* 353 */
+/* 354 */
 /***/ function(module, exports) {
 
 	module.exports = normalize;
@@ -53947,7 +53981,7 @@
 
 
 /***/ },
-/* 354 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var each = __webpack_require__(313).coordEach;
