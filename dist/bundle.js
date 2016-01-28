@@ -48674,6 +48674,9 @@
 	            params.text = queryComponents.text;
 	            delete queryComponents.text;
 	            params = Object.assign({}, params, queryComponents);
+	            if (params.users === '*') {
+	                delete params.users;
+	            }
 	        }
 	        return _utils2.default.getQueryString(params);
 	    },
@@ -51763,6 +51766,9 @@
 	            params.comment = queryComponents.text;
 	            delete queryComponents.text;
 	            params = Object.assign({}, params, queryComponents);
+	            if (params.users === '*') {
+	                delete params.users;
+	            }
 	        }
 	        return _utils2.default.getQueryString(params);
 	    },

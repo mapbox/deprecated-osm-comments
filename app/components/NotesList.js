@@ -38,6 +38,9 @@ var NotesList = React.createClass({
             params.comment = queryComponents.text;
             delete queryComponents.text;
             params = Object.assign({}, params, queryComponents);
+            if (params.users === '*') {
+                delete params.users;
+            }
         }
         return utils.getQueryString(params);
     },
