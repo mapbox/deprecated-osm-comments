@@ -4,6 +4,7 @@ import NavBar from '../containers/NavBar';
 import ContentContainer from '../containers/Content';
 import ChangesetsList from './ChangesetsList';
 import Header from './Header';
+import Footer from './Footer';
 
 var App = React.createClass({
     render: function() {
@@ -17,6 +18,7 @@ var App = React.createClass({
                 <Header />
                 <NavBar location={this.props.location} />
                 <ContentContainer ref="contentContainer" child={child} />
+                <Footer />
             </div>
         );
     }

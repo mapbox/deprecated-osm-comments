@@ -71,3 +71,10 @@
         width: 100%;
     }
 }
+
+#footer {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background-color: #fff;
+}
