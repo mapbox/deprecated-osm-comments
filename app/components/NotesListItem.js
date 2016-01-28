@@ -71,7 +71,7 @@ var NotesListItem = React.createClass({
             );
         } else {
             var statusHTML = (
-                    <span className="button short fill-green button-status button-inline pad1x fl space-top0 space-left1">
+                    <span className="button short fill-red button-status button-inline pad1x fl space-top0 space-left1">
                         Closed
                     </span> 
             )

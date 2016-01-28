@@ -51946,7 +51946,7 @@
 	        } else {
 	            var statusHTML = _react2.default.createElement(
 	                'span',
-	                { className: 'button short fill-green button-status button-inline pad1x fl space-top0 space-left1' },
+	                { className: 'button short fill-red button-status button-inline pad1x fl space-top0 space-left1' },
 	                'Closed'
 	            );
 	        }
