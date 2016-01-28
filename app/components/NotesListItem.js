@@ -62,7 +62,7 @@ var NotesListItem = React.createClass({
         var lat = note.geometry.coordinates[1];
         var commentCount = props.commentCount;
         var commentText = commentCount === 1 ? 'Comment' : 'Comments';
-        var zoom = 13;
+        var zoom = 15;
         if (isOpen) {
             var statusHTML = (
                     <span className="button short fill-green button-status button-inline pad1x fl space-top0 space-left1">
