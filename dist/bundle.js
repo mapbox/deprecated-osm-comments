@@ -51936,7 +51936,7 @@
 	        var lat = note.geometry.coordinates[1];
 	        var commentCount = props.commentCount;
 	        var commentText = commentCount === 1 ? 'Comment' : 'Comments';
-	        var zoom = 13;
+	        var zoom = 15;
 	        if (isOpen) {
 	            var statusHTML = _react2.default.createElement(
 	                'span',
