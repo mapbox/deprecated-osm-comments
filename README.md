@@ -9,6 +9,8 @@ Choose 'changesets' or 'notes' in the top selector, and use the search box to fi
 
 [All filter options documented here](https://github.com/mapbox/osm-comments-api/blob/master/API.md)
 
+By default, this searches through conversations of users defined in the [config file](https://github.com/mapbox/osm-comments/blob/mb-pages/app/config.js#L6). If you wish to search through conversations of all users, use `users:*` in the search bar - [example](https://www.mapbox.com/osm-comments/#/notes/?q=bbox:0.3021,51.7253,-0.5576,51.2550%20users:*).
+
 ## Development
 
 OSM Comments uses:
