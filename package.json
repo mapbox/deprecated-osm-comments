@@ -9,7 +9,7 @@
     "url": "https://github.com/mapbox/osm-comments-frontend.git"
   },
   "scripts": {
-    "build": "./node_modules/webpack/bin/webpack.js"
+    "build": "./node_modules/webpack/bin/webpack.js;rm -rf node_modules/mapbox.js/docs/"
   },
   "author": "Sanjay Bhangar",
   "license": "BSD",
@@ -34,7 +34,7 @@
     "json-loader": "^0.5.4",
     "leaflet": "^0.7.7",
     "lodash": "^3.10.1",
-    "mapbox.js": "^2.2.3",
+    "mapbox.js": "^2.3.0",
     "moment": "^2.10.6",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
