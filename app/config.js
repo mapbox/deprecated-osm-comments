@@ -1,6 +1,5 @@
 const config = {
-    // 'API_BASE': 'https://api-osm-comments-production.tilestream.net/api/v1/',
-    'API_BASE': 'http://api-osm-comments-staging-vpc-1131886100.us-east-1.elb.amazonaws.com//api/v1/',
+    'API_BASE': 'https://http://api-osm-comments-staging.tilestream.net/api/v1/',
     'MAPBOX_ACCESS_TOKEN': 'pk.eyJ1Ijoic2FuamF5YiIsImEiOiI3NjVvMFY0In0.byn_eCZGAwR1yaPeC-SVKw',
     'OSM_BASE': 'https://www.openstreetmap.org/',
     'STATIC_MAPS_BASE': 'https://api.mapbox.com/v4/mapbox.streets/',
