@@ -32,7 +32,9 @@ const config = {
         'karitotp',
         'manings',
         'sanjayb',
-        'Arunasank'
+        'Arunasank',
+        'bkowshik',
+        'nammala'
     ]
 };
 
