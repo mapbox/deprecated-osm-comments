@@ -34,7 +34,8 @@ const config = {
         'sanjayb',
         'Arunasank',
         'bkowshik',
-        'nammala'
+        'nammala',
+        'poornibadrinath'
     ]
 };
 
