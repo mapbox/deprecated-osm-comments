@@ -34,6 +34,7 @@
     "json-loader": "^0.5.4",
     "leaflet": "^0.7.7",
     "lodash": "^3.10.1",
+    "mapbox-data-team": "^1.0.0",
     "mapbox.js": "^2.3.0",
     "moment": "^2.10.6",
     "react": "^0.14.3",
