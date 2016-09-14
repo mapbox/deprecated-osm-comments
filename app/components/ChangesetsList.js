@@ -99,6 +99,7 @@ var ChangesetsList = React.createClass({
         });
         return (
             <div className='clearfix pad4y limiter' id="changesets">
+                <h3 className="center pad1y">Total Results: {this.state.total}</h3>
                 {changesetsHTML}
             </div>  
         );
