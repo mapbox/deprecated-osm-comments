@@ -2,14 +2,14 @@
   "name": "osm-comments-frontend",
   "version": "0.0.1",
   "description": "Frontend for OSM Comments and Notes monitoring tool",
-  "main": "webpack.config.js",
-  "start": "node server.js",
+  "main": "app/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mapbox/osm-comments-frontend.git"
   },
   "scripts": {
-    "build": "./node_modules/webpack/bin/webpack.js"
+    "start": "webpack-dev-server --inline",
+    "build": "webpack"
   },
   "author": "Sanjay Bhangar",
   "license": "BSD",
