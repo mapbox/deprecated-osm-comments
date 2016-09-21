@@ -100,6 +100,7 @@ var NotesList = React.createClass({
         });
         return (
            <div className='clearfix pad4y limiter' id="notes">
+               <h3 className="center pad1y">Total Results: {this.state.total}</h3>
                {notesHTML}
            </div>
         );
