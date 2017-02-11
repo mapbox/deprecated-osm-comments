@@ -1,53 +1,53 @@
 {
-  "name": "osm-comments-frontend",
-  "version": "0.0.1",
-  "description": "Frontend for OSM Comments and Notes monitoring tool",
-  "main": "app/main.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mapbox/osm-comments-frontend.git"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --inline",
-    "build": "webpack"
-  },
-  "author": "Sanjay Bhangar",
-  "license": "BSD",
-  "bugs": {
-    "url": "https://github.com/mapbox/osm-comments-frontend/issues"
-  },
-  "homepage": "https://github.com/mapbox/osm-comments-frontend",
-  "devDependencies": {
-    "babel-core": "^6.2.1",
-    "babel-loader": "^6.2.0",
-    "babel-preset-es2015": "^6.1.18",
-    "babel-preset-react": "^6.1.18",
-    "eslint": "^1.10.1",
-    "eslint-loader": "^1.1.1",
-    "eslint-plugin-react": "^3.10.0",
-    "jsx-loader": "^0.13.2",
-    "webpack": "^1.12.8",
-    "webpack-dev-server": "^1.12.1"
-  },
-  "dependencies": {
-    "history": "^1.13.1",
-    "json-loader": "^0.5.4",
-    "leaflet": "^0.7.7",
-    "lodash": "^3.10.1",
-    "mapbox-data-team": "^1.0.0",
-    "mapbox.js": "^2.3.0",
-    "moment": "^2.10.6",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "react-modal": "^0.6.1",
-    "react-router": "^1.0.0",
-    "turf-buffer": "^1.0.4",
-    "turf-centroid": "^1.1.2",
-    "turf-extent": "^1.0.4",
-    "webpack": "^1.12.14",
-    "xhr": "^2.2.0"
-  },
+  "license": "BSD-2-Clause", 
   "engines": {
     "node": ">=4.0.0 <6.0.0"
-  }
+  }, 
+  "name": "osm-comments-frontend", 
+  "repository": {
+    "url": "https://github.com/mapbox/osm-comments-frontend.git", 
+    "type": "git"
+  }, 
+  "author": "Sanjay Bhangar", 
+  "bugs": {
+    "url": "https://github.com/mapbox/osm-comments-frontend/issues"
+  }, 
+  "version": "0.0.1", 
+  "dependencies": {
+    "react": "^0.14.3", 
+    "turf-centroid": "^1.1.2", 
+    "mapbox-data-team": "^1.0.0", 
+    "lodash": "^3.10.1", 
+    "xhr": "^2.2.0", 
+    "turf-extent": "^1.0.4", 
+    "webpack": "^1.12.14", 
+    "mapbox.js": "^2.3.0", 
+    "react-dom": "^0.14.3", 
+    "leaflet": "^0.7.7", 
+    "react-router": "^1.0.0", 
+    "moment": "^2.10.6", 
+    "turf-buffer": "^1.0.4", 
+    "json-loader": "^0.5.4", 
+    "react-modal": "^0.6.1", 
+    "history": "^1.13.1"
+  }, 
+  "scripts": {
+    "start": "webpack-dev-server --inline", 
+    "build": "webpack"
+  }, 
+  "devDependencies": {
+    "eslint-loader": "^1.1.1", 
+    "eslint-plugin-react": "^3.10.0", 
+    "babel-preset-es2015": "^6.1.18", 
+    "webpack": "^1.12.8", 
+    "jsx-loader": "^0.13.2", 
+    "babel-loader": "^6.2.0", 
+    "eslint": "^1.10.1", 
+    "babel-preset-react": "^6.1.18", 
+    "babel-core": "^6.2.1", 
+    "webpack-dev-server": "^1.12.1"
+  }, 
+  "main": "app/main.js", 
+  "homepage": "https://github.com/mapbox/osm-comments-frontend", 
+  "description": "Frontend for OSM Comments and Notes monitoring tool"
 }
